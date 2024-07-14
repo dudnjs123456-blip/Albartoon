@@ -1,0 +1,76 @@
+.body{
+    margin: 0%;
+    padding: 0%;
+}
+.firstpage{
+    position: absolute;
+    width: 100%;
+    height: 200%;
+}
+
+.chatting{
+    position: absolute;
+    left: 25%;
+    top: 5%;
+    width: 50%;
+    height: 900px;
+    border-radius: 10%;
+    border: solid ;
+    filter: drop-shadow(0.5px 0.5px 0.5px gray);
+}
+
+.main_screen{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    border: 1px solid black;
+}
+
+.chatting_text{
+    position: absolute;
+    width: 100%;
+    height: 8%;
+    top: 92%;
+    border: 1px solid black;
+    filter: none;
+    border-width: 1px 0px 0px 0px;
+}
+
+.chatting_text::placeholder{
+    position: absolute;
+    left: 5%;
+}
+
+.chatt_submit{
+    position: absolute;
+    width: 100px;
+    height: 58px;
+    top: 92%;
+    left: 85.4%;
+}
+
+.chatt_log{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.chatt_log li{
+    width: 200px ;
+    height: 30px;   
+    margin-top: 20px;
+    margin-left: 50px;
+    list-style: none;
+}
+
+.chatt_log li::before{
+    position: absolute;
+    content: "";
+    width: 25px;
+    left: 50px;
+    height: 25px;
+    border: 0.5px solid gray;
+    border-radius: 50%;
+}

@@ -1,0 +1,136 @@
+.Store_Name{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 12%;
+    left: 41%;
+}
+
+.Store_Name h1{
+    color: black;
+}
+
+.aside{
+    position: absolute;
+    width: 10%;
+    height: 70%;
+    top: 20%;
+    box-shadow: 1px 1px 1px gray;
+    background-color: rgba(255, 255, 255, 0.817);
+    z-index: 10;
+}
+
+
+.Store_Main{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: -1;
+}
+
+.Store_Mainbox{
+    position: absolute;
+    left: 20%;
+    top: 12.8%;
+    width: 45%;
+    height: 35%;
+    filter: drop-shadow(1px 1px 2px gray);
+    background-image: url('홍대.jpeg');
+}
+.Store_Mn{
+    position: absolute;
+    width: 28%;
+    height: 22%;
+    top: 57%;
+    left: 12%;
+    border: 0.1px solid black;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 1px rgb(213, 213, 213);
+}
+
+.Store_Mn li{
+    list-style: none;
+    width: 400px;
+    margin-left: 10px;
+    text-align: center;
+    margin-top: 14px;
+    border: 1px solid black;
+}
+#map{
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    top: 23%;
+    left: 15%;
+    filter: drop-shadow(1px 1px 1px gray);
+    border: none;
+    z-index: 100;
+  }
+
+
+.carousel-indicators{
+    background-color: black;
+}
+
+.Carousel_list{
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    left: 47%;
+    top: 24%;
+    z-index: 101;
+    border: 1px solid black;
+}
+
+.list1{
+    position: absolute;
+    background-color: red;
+}
+
+#MemberPlus{
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    width: 120px;
+    height: 30px;
+    background: rgb(29, 55, 101);
+    color: white;
+    border: 0.1px solid white;
+    font-size: 15px;
+    border-radius: 3%;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.Memberul{
+    position: absolute;
+    top: 43px;
+    left: 10px;
+    text-align: center;
+}
+
+.Memberul li{
+    margin-top: 2px;
+}
+
+.MemberPlusModal{
+    height: 600px;
+    background: white;
+}
+
+.MemberPlusModal a{
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    left: 10%;
+    top: 28%;
+    text-align: center;
+}
+.MemberPlusUI{
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    top: 40%;
+    left: 24%;
+}

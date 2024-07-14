@@ -1,0 +1,248 @@
+html,body{
+    overflow-x: hidden;
+}
+
+.clock{
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    font-size: 64px;
+    left: 68%;
+    top: 12%;
+    border: 1px solid gray;
+}
+
+.clocknumber{
+    position: relative;
+    top: 7%;
+    left: 30%;
+}
+.clockbutton{
+    position: relative;
+    width: 170px;
+    height: 60px;
+    left: 22.5%;
+    border: 1px solid black;
+
+    background: white;
+    font-size: 16px;
+    
+}
+
+.clockstopbutton{
+    position: relative;
+    width: 170px;
+    height: 60px;
+    left: 22.5%;
+    border: 1px solid black;
+    background: white;
+    font-size: 16px;
+    
+}
+
+.qr{
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    left: 10%;
+    border:  1px solid red;
+}
+
+.qr ul{
+    display: flex;
+    list-style: none;
+    padding: 0%;
+    margin: 0%;
+}
+
+.qr li{
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+}
+
+.rightmenu{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    left: 70%;
+    transition-duration: 1s;
+}
+
+.rightsc{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    top: 6%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.rightsc li{
+    float: left;
+    width: 18%;
+    height: 15%;
+    margin: 1%;
+    background: rgb(106, 165, 255);
+    list-style: none;
+    color: white;
+    text-align: center;
+    border-radius: 5%;
+    filter: drop-shadow(1px 1px 1px gray);
+}
+
+.swp{
+    width: 100%;
+    height: 40%;
+    top: 8%;
+    position: relative;
+}
+
+.swpli{
+    width: 180px;
+    height: 240px;
+    border: 0.1px solid black;
+    list-style: none;
+    border-radius: 8%;
+    float: left;
+    filter: drop-shadow(1px 1px 1px gray);
+}
+
+.swpli a{
+    position: absolute;
+    width: 100%;
+    top: 105%;
+}
+
+.bt{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background: beige;
+    z-index: 0;
+}
+
+.hi {
+    position: absolute;
+    top: 10%;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    line-height:95px;
+    margin:50px;
+    border: 2px dotted blue;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: all .4s;
+    text-align:center;
+    cursor: pointer;
+    font-weight:10px;
+    color:blue;
+  }
+  
+  
+  .hi::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 1px dotted blue;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 1s;
+  }
+  .hi:hover {border:2px solid blue;background-color:blue;color:#fff;}
+  .hi:hover::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    border: 1px dotted blue;
+    opacity: 1;
+  }
+
+  .atlist{
+      position: absolute;
+   width: 80%;   
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    opacity: 50%;
+    border: 0.1px solid black;
+  }
+
+  .atlist ul{
+    position: relative;
+    display: inline-block;
+      list-style: none;
+      width: 50%;
+      height: 20%;
+      margin: 0%;
+      margin-left: 20px;
+      margin-top: 20px;
+      padding: 0%;
+      border:  1px solid black;
+  }
+
+  .atlist li{
+      width: 100%;
+      height: 50%;
+  }
+.atlist li:nth-child(1){
+    width: 100%;
+    height: 30px;
+    color: rgb(0, 0, 0);  
+    font-weight: bold;
+}
+
+.atlist li:nth-child(2){
+    height: 150px;
+        color: black;
+}
+
+
+.atlist p a{
+    left: 5px;
+}
+
+.atlist_Button{
+    left: 53%;
+    top: 2.6%;
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    border-width: 1px;
+    filter: drop-shadow(0.1px 0.1px gray);
+    background: none;
+    font-size: 13px;
+}
+
+.twoPage{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 200%;
+    opacity: 0%;
+    transition-duration: 1s;
+}
+
+.twoPage_mainSection{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height: 50%;
+    border:  0.1px solid gray;
+}
+
+.ModalInput{
+    height: 600px;
+}

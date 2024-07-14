@@ -1,0 +1,139 @@
+.html,body{
+    padding: 0%;
+    margin: 0%;
+}
+.mainbox{
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    border: 1px solid black;
+}
+
+.mainui{
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 7%;
+}
+
+.mainname{
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    bottom: 77%;
+    text-align: center;
+    line-height: 5;
+    font-size: 70px;
+}
+
+#loginid{
+    position: absolute;
+    width: 65%;
+    height: 10%;
+    top: 25%;
+    left: 18%;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 3px;
+}
+#loginid::placeholder{
+    position: relative;
+    left: 4%;
+    font-size: 14px;
+}
+
+#loginpassword{
+    position: absolute;
+    width: 65%;
+    height: 10%;
+    top: 37%;
+    left: 18%;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 3px;
+}
+
+#loginpassword::placeholder{
+    position: relative;
+    left: 4%;
+    font-size: 14px;
+}
+
+#loginsubmit{
+    position: absolute;
+    width: 65%;
+    height: 10%;
+    top: 50%;
+    left: 18%;
+    background: rgb(118, 118, 253);
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    transition-duration: 0.5s;
+}
+
+.loginui{
+    list-style: none;
+    position: absolute;
+    top: 64%;
+    left: 13%;
+}
+
+.loginui li{
+    float: left;
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.a1{
+    position: absolute;
+    top: 69%;
+    left: 46%;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.naver{
+    position: absolute;
+    top: 74%;
+    left: 21%;
+    width: 58.5%;
+    height: 20%;
+    list-style: none;
+    padding: 0%;
+    margin: 0%;
+    text-align: center;
+    line-height: 4;
+}
+
+#naver{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border:  solid black;
+    border-width: 1px 0px 0px 1px;
+}
+
+#google{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    border: 1px solid black;
+    border-width: 1px 1px 0px 1px;
+}
+
+#kakao{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    border: 1px solid black;
+}
+
+#instagram{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    border: 1px solid black;
+    border-width: 1px 1px 1px 0px;
+}

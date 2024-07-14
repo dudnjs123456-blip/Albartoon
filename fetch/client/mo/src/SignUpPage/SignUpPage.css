@@ -1,0 +1,76 @@
+
+
+.SignBox1{
+    position: absolute;
+    width: 80%;
+    height: 20%;
+    left: 10%;
+    top: 30%;
+    border: 1px solid gray;
+}
+
+#Signh1{
+    position: absolute;
+    left: 10%;
+    top: 23%;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+#cs{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    right: 800px;
+}
+
+
+.SignBox2{
+    position: absolute;
+    width: 80%;
+    height: 20%;
+    left: 10%;
+    top: 65%;
+    border: 1px solid gray;
+}
+
+.Signbutton{
+    position: absolute;
+    top: 51%;
+    left:46%;
+}
+
+.Signbutton2{
+    position: absolute;
+    top: 86%;
+    left: 46%;
+}
+
+#d1{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+}   
+
+.b2{
+    position: absolute;
+    font-size: 14px;
+    width: 100px;
+    height: 16px;
+    left: 25px;
+}
+
+.nextbutton{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: 90%;
+    left: 43%;
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    background: rgb(108, 141, 232);
+    line-height: 2.7;
+}
+

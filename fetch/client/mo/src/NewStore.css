@@ -1,0 +1,60 @@
+.NewStore_MainPage {
+    position: absolute;
+    width: 40%;
+    height: 84%;
+    left: 30%;
+    top: 10%;
+    box-shadow: 1px 1px 1px gray;
+    border: 0.1px solid black;
+}
+
+
+.NewStore_MainPage a{
+    position: absolute;
+    left: 16%;
+    top: 25%;
+    height: 10px;
+    font-size: 22px;
+}
+
+.Maindiv{
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    text-align: center;
+}
+
+.Maindiv span{
+    width: 100%;
+    font-weight: 600;
+    font-size: 70px;
+}
+.NewStore_Table{
+    position: absolute;
+    width: 80%;
+    height: 45%;
+    left: 10%;
+    top: 35%;
+}
+
+.NewStore_Table tr{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.NewStore_Table td{
+    border: 1px solid black;
+}
+
+.Listsubmit{
+    position: absolute;
+    width: 550px;
+    height: 80px;
+    top: 85%;
+    background:rgb(135, 157, 235);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 28px;
+    font-weight: 400;
+}

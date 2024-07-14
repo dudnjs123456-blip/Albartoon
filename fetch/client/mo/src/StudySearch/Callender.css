@@ -1,0 +1,37 @@
+.body{
+    margin: 0%;
+}
+
+.callenderMain{
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    height: 80%;
+    left: 10%;
+}
+.fc .fc-daygrid-day-frame {
+    height: 30px;  /* 각 칸의 높이 조정 */
+  }
+  
+  .fc .fc-daygrid-day-top {
+    height: 20px;  /* 각 칸의 상단 날짜 부분 높이 조정 */
+  }
+  
+  .fc .fc-daygrid-day-events {
+    height: 30px;  /* 각 칸의 이벤트 부분 높이 조정 */
+    font-size: 15px;  /* 이벤트 글자 크기 조정 */
+  }
+
+  .fc .fc-scroller {
+    overflow: hidden;  /* 스크롤 숨기기 */
+  }
+  
+  .fc .fc-daygrid-day-number {
+    font-size: 12px;  /* 날짜 글자 크기 조정 */
+  }
+  
+  .event-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }

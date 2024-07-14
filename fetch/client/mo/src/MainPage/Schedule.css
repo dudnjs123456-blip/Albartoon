@@ -1,0 +1,75 @@
+.qr{
+    position: absolute;
+    width: 408px;
+    height: 408px;
+    top: 30%;
+    border: 2px solid green;
+}
+
+.qrCodeH{
+    position: absolute;
+    top: 20%;
+    left: 14%;
+}
+
+.qrPage_MainSextion{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    background: blanchedalmond;
+}
+
+.qrPage_Schedule{
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    border: 1px solid black;
+    left: 10%;
+    top: 10%;
+}
+
+.qrPage_Schedule h1{
+    text-align: center;
+    margin-top: 8px;
+}
+
+.qrPage_Schedule table{
+    width: 100%;
+}
+.qrPage_Schedule table tr th{
+    border: 1px solid black;
+    justify-content: space-around;
+}
+
+.qrPage_Schedule table tr{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.qrPage_Schedule table td{
+    border: 1px solid black;
+}
+
+.qrPage_Schedule table tr :nth-child(1){
+    width: 20%;
+}
+
+
+#timeIndex p{
+    font-size: 14px;
+    width: 150px;
+    height: 10px;
+    margin-left: 65px;
+}
+
+.User_td{
+    position: relative;
+    font-size: 12px;
+    width: 100px;
+    height: 10px;   
+}
+
+.currentDateTime{
+    margin-left: 200px;
+}

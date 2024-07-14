@@ -1,0 +1,129 @@
+.body{
+    margin: 0%;
+    padding: 0%;
+}
+
+.Fist_section{
+    position: absolute;
+    width: 100%;
+    height: 150%;
+    border: 1px solid black;
+}
+
+.Mypage_section{
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 4%;
+    border: 1px solid gray;
+}
+
+.UserFeature{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background: rgba(89, 167, 170, 0.454);
+}
+
+.MyPage_First{
+    position: absolute;
+    width: 40%;
+    height: 5%;
+    left: 32%;
+    top: 5%;
+    font-size: 36px;
+}
+
+.User_image{
+    position: absolute;
+    top: 12%;
+    left: 25%;
+    width: 220px;
+    height: 220px;
+    border: 1px solid black;
+    border-radius: 100%;
+    background-image: url('유저이미지.png');
+    background-size: 100%;
+}
+
+.Mypage_name{
+    position: absolute;
+    width: 50%;
+    height: 3%;
+    left: 20%;
+    top: 32%;
+    border: 1px solid black;
+    background: white;
+    text-align: center;
+}
+
+.User_Privacy{
+position: absolute;
+width: 50%;
+height: 30%;
+left: 20%;
+top: 35%;
+border: 1px solid black;
+list-style: none;
+margin: 0%;
+padding: 0%;
+background: white;
+}
+
+.User_Privacy li{
+    margin-top: 20px;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+.Mypage_Mainsection{
+    position: absolute;
+    top: 4%;
+    left: 30%;
+    width: 70%;
+    height: 100%;
+}
+
+.Mypage_Mainsection_title{
+    position: absolute;
+    left: 40%;
+    top: 2%;
+}
+
+.Mypage_Mainsection_FirstSection{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 7%;
+    border: 1px solid black;
+}
+
+.Mypage_Mainsection_SecondSection{
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 37%;
+}
+
+.Mypage_Mainsection_FirstSection h1{
+    position: absolute;
+    left: 38.5%;
+    top: 3%;
+}
+
+.Mypage_Mainsection_FirstSection ul{
+    position: absolute;
+    width: 33%;
+    height: 100%;
+    left: 2%;
+    top:20%;
+}
+
+
+.Mypage_Mainsection_FirstSection ul:nth-child(3){
+    margin-left: 30%;
+}
+
+.Mypage_Mainsection_FirstSection ul:nth-child(4){
+    margin-left: 60%;
+}
