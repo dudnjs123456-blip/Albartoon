@@ -8,6 +8,16 @@ import './Schedule.css';
 function Schedule(){
     const [buttonState, setButtonState] = useState('출근'); // 초기 상태는 '출근'
     const [StartTime, setStartTime] = useState([]);
+
+    const extractHour = (timeString) => {
+      // 시간 문자열에서 시간 부분만 추출 (예: "10:2:16" -> "10")
+      return timeString.split(':')[0];
+    };
+    
+    const extractIntervalHour = (interval) => {
+      // interval 문자열에서 시작 시간 부분만 추출 (예: "03:00 ~ 04:00" -> "03")
+      return interval.split(' ~ ')[0].split(':')[0];
+    };
        // DB데이터 가져오기
        const Loginstate = useSelector((state) => state.stateLogin.stateLogin.value);
        const UserFullName = Loginstate.replace('님  반갑습니다!', '');
@@ -29,6 +39,9 @@ const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 �
 const day = String(today.getDate()).padStart(2, '0'); // 일자
 
 const formattedDate = `${year}-${month}-${day}`;
+
+
+
 
 const handleWorkToggle = () => {
   if (buttonState === '출근') {
@@ -61,32 +74,45 @@ const handleWorkToggle = () => {
         })
       });
   } 
-  
-  else if (buttonState === '멈춤') {
+ 
+
+  if (buttonState === '멈춤') {
     setButtonState('다시 시작');
     handleStartStop();
         // Fetch로 데이터 전송
-        fetch('http://localhost:10001/schduleState', {
+        fetch('http://localhost:10001/RunState', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            isRunning: true
+            isRunning: true,
+            userId: UserFullID1,
           })
+        }).then(response => {
+          if (response.ok) {
+            setButtonState('다시 시작');
+          }
         });
-  } else if (buttonState === '다시 시작') {
+  } 
+  if (buttonState === '다시 시작') {
     handleStartStop();
     setButtonState('멈춤');
+    console.log('멈춤')
           // Fetch로 데이터 전송
-          fetch('http://localhost:10001/schduleState', {
+          fetch('http://localhost:10001/RunState', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+              userId: UserFullID1,
               isRunning: false
             })
+          }).then(response => {
+            if (response.ok) {
+              setButtonState('멈춤');
+            }
           });
   }
 };
@@ -218,45 +244,19 @@ const handleWorkToggle = () => {
         return () => clearInterval(interval);
       }, [isRunning]);
     
-      useEffect(() => {
-        // 실행 상태를 로컬 스토리지에 저장
-        localStorage.setItem('timerIsRunning', isRunning);
-      }, [isRunning]);
       
-      
+    
       const handleStartStop = () => {
         setIsRunning(!isRunning);
       };
+ 
     
-      const handleReset = () => {
-        setLastTime(prevLastTime => prevLastTime + seconds); // 초기화 시 현재 시간을 마지막 시간에 더함
-        setSeconds(0);
-        setIsRunning(false);
-        // 초기화 시 로컬 스토리지도 업데이트
-        localStorage.setItem('timerSeconds', 0);
-        localStorage.setItem('timerIsRunning', false);
-      };
-    
-
       // 초를 시간, 분, 초로 변환
       const trRefs = useRef([]);
-      const formatTime = () => {
-        const getSeconds = `0${seconds % 60}`.slice(-2);
-        const minutes = `${Math.floor(seconds / 60)}`;
-        const getMinutes = `0${minutes % 60}`.slice(-2);
-        const getHours = `0${Math.floor(seconds / 3600)}`.slice(-2);
-        if (seconds === 0) {
-          return '근무중 0시 0분 0초';
-        } else {
-          return `근무중 ${getHours}시 ${getMinutes}분 ${getSeconds}초`;
-        }
-      };
 
 
 
     // 시간 tr  만들기
-
-
     const [intervals, setIntervals] = useState([]);
     useEffect(() => {
         const timeIntervals = createTimeIntervals();
@@ -284,10 +284,6 @@ function getTimeSlot(hour) {
   
 //   console.log(getTimeSlot(currentHour)); // '09:00 ~ 10:00'
 const [currentHour, setCurrentHour] = useState(new Date().getHours());
-const filteredTimeSlot = intervals.filter(timeSlot => timeSlot === getTimeSlot(currentHour));
-
-
-
 
 useEffect(() => {
   const timer = setInterval(() => {
@@ -354,109 +350,93 @@ useEffect(() => {
              });
          })}
 
-
-     useEffect(() => {
-      console.log('useEffect 실행됨', UserFullID1, formattedDate);
-      
-      if (!UserFullID1 || !formattedDate) {
-        console.warn('UserFullID1 또는 formattedDate가 설정되지 않았습니다.');
-        return;
-      }
-    
-      // 서버에서 저장된 데이터 불러오기
-      fetch('http://localhost:10001/schduleLoding', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          UserFullID1, 
-          today: formattedDate
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // 서버에서 가져온 데이터를 콘솔에 출력
-        setScheduleData(data); // 데이터를 상태에 저장
-        if (data.length > 0) {
-          setCurrentTime(data[0].StartTime); // 첫 번째 항목의 StartTime을 currentTime에 설정
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-    }, [UserFullID1, formattedDate,buttonState]);
-
-    const extractHour = (timeString) => {
-      // 시간 문자열에서 시간 부분만 추출 (예: "10:2:16" -> "10")
-      return timeString.split(':')[0];
-    };
-    
-    const extractIntervalHour = (interval) => {
-      // interval 문자열에서 시작 시간 부분만 추출 (예: "03:00 ~ 04:00" -> "03")
-      return interval.split(' ~ ')[0].split(':')[0];
-    };
-  
-
-    
+         useEffect(() => {
+          console.log('useEffect 실행됨', UserFullID1, formattedDate);
+          
+          if (!UserFullID1 || !formattedDate) {
+            console.warn('UserFullID1 또는 formattedDate가 설정되지 않았습니다.');
+            return;
+          }
+        
+          // 서버에서 저장된 데이터 불러오기
+          fetch('http://localhost:10001/schduleLoding', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              UserFullID1, 
+              today: formattedDate
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data); // 서버에서 가져온 데이터를 콘솔에 출력
+            setScheduleData(data); // 데이터를 상태에 저장
+          })
+        
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+        }, [UserFullID1, formattedDate,isRunning]);
     
   
- 
+
     
 
     return (
-      <body>
-      <MainNab />
-      <h1 className="qrCodeH">우리가게 QR코드</h1>
-      <section className='qr'>
-        <QRCodeCanvas
-          value="/" 
-          includeMargin
-          fgColor="#393E46"
-          size={400}
-        />
-      </section>  
+        <body>
+        <MainNab />
+        <h1 className="qrCodeH">우리가게 QR코드</h1>
+        <section className='qr'>
+          <QRCodeCanvas
+            value="/" 
+            includeMargin
+            fgColor="#393E46"
+            size={400}
+          />
+        </section>  
 
-      <section className='qrPage_MainSextion'>
-        <div className='qrPage_Schedule'>
-          <div className='currentDateTime'>
-            현재 날짜와 시간: {currentDateTime}
-          </div>
-          <h1>우리 가게 스케줄</h1>
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                {UserList.map((user, index) => (
-                  <th key={index}>{user}</th> 
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {intervals.map((interval, index) => (
-                <tr key={index} id={`tr-${index}`} ref={(el) => (trRefs.current[index] = el)}>
-                  <td style={{ color: interval === getTimeSlot(currentHour) ? 'red' : 'black' }}>
-                    {interval}
-                  </td>
-                  {UserList.map((user, userIndex) => (
-                    <td key={userIndex} className='User_td' style={{ 
-                      backgroundColor: scheduleData.some(item => 
-                        item.MemberName === user && 
-                        extractHour(item.StartTime) === extractIntervalHour(interval)
-                      ) ? 'red' : 'transparent' 
-                    }}>
-                      {scheduleData.some(item => 
-                        item.MemberName === user && 
-                        extractHour(item.StartTime) === extractIntervalHour(interval)
-                      ) && (
-                  <>
+        <section className='qrPage_MainSextion'>
+          <div className='qrPage_Schedule'>
+            <div className='currentDateTime'>
+              현재 날짜와 시간: {currentDateTime}
+            </div>
+            <h1>우리 가게 스케줄</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  {UserList.map((user, index) => (
+                    <th key={index}>{user}</th> 
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {intervals.map((interval, index) => (
+                  <tr key={index} id={`tr-${index}`} ref={(el) => (trRefs.current[index] = el)}>
+                    <td style={{ color: interval === getTimeSlot(currentHour) ? 'red' : 'black' }}>
+                      {interval}
+                    </td>
+                    {UserList.map((user, userIndex) => (
+                      <td key={userIndex} className='User_td' style={{ 
+                        backgroundColor: scheduleData.some(item => 
+                          item.MemberName === user && 
+                          extractHour(item.StartTime) === extractIntervalHour(interval)
+                        ) ? 'red' : 'transparent' 
+                      }}>
+                        {scheduleData.some(item => 
+                          item.MemberName === user && 
+                          extractHour(item.StartTime) === extractIntervalHour(interval)
+                        ) && (
+                          <>
       {(() => {
+
         const foundItem = scheduleData.find(item => 
           item.MemberName === user && 
           extractHour(item.StartTime) === extractIntervalHour(interval)
-        );
+        );  
 
-        if (!foundItem) return null;
 
         const day = new Date(foundItem.today).getDate(); // '일' 부분 추출
         const formattedDay = String(day).padStart(2, '0'); // 두 자리 숫자로 포맷
@@ -477,36 +457,38 @@ useEffect(() => {
         const hoursDiff = Math.floor(diffInSeconds / 3600);
         const minutesDiff = Math.floor((diffInSeconds % 3600) / 60);
         const secondsDiff = diffInSeconds % 60;
-
         const formattedDiff = `${String(hoursDiff).padStart(2, '0')}:${String(minutesDiff).padStart(2, '0')}:${String(secondsDiff).padStart(2, '0')}`;
+     
+
 
         return (
           <>
-            <p>({formattedDay}) 근무시작 시간 : {foundItem.StartTime}</p>
+            <p>    ({formattedDay}) 근무시작 시간 : {foundItem.StartTime}</p>
             <p>경과 시간: {formattedDiff}</p>
           </>
         );
       })()}
     </>
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div>
-            <h2>근무시간: {convertSecondsToMinutesAndHours(savedSeconds)}</h2>
+                        
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div>
+              <h2>근무시간: {convertSecondsToMinutesAndHours(savedSeconds)}</h2>
+            </div>
+            {buttonState !== '퇴근' ? (
+              <button onClick={handleWorkToggle}>{buttonState}</button>
+            ) : (
+              <button onClick={handleLeave}>퇴근</button>
+            )}
+            {buttonState !== '출근' && <button onClick={handleLeave}>퇴근</button>}
           </div>
-          {buttonState !== '퇴근' ? (
-            <button onClick={handleWorkToggle}>{buttonState}</button>
-          ) : (
-            <button onClick={handleLeave}>퇴근</button>
-          )}
-          {buttonState !== '출근' && <button onClick={handleLeave}>퇴근</button>}
-        </div>
-      </section>
-    </body>
+        </section>
+      </body>
     )
 }
 

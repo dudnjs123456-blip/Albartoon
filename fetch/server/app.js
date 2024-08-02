@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   console.log(req.ip);
 })
 
-app.get('/user',(req,res)=>{
+app.get('/user',(req,res)=>{    
   res.json(todoList); 
 })
 
@@ -129,35 +129,38 @@ app.get("/userLgoin", (req,res)=> {
   res.json(UserLoginDB);
 });
 
-app.post('/userLgoin',(req,res) =>{ 
-  const { User_Id , User_password, } = req.body;
-  console.log('req.body : ', req.body );
-  let UsersubmitDB = {
-    new_tablecol2 : User_password,
-    new_tablecol : User_Id,
-  }
+const jwt = require('jsonwebtoken');
 
-  let LoginCheck = connection.query("select * from new_table where new_tablecol2 =? and new_tablecol =? ",[User_Id , User_password],(error, rows) => {
+app.post('/userLogin', (req, res) => {
+  const { User_Id, User_password } = req.body;
+  console.log('req.body : ', req.body);
+
+  let LoginCheck = connection.query("select * from new_table where new_tablecol2 = ? and new_tablecol = ?", [User_Id, User_password], (error, rows) => {
     if (error) throw error;
-    // connection.query("INSERT INTO new_table SET ? ",uceom);
-    console.log(rows[0]);
-    if(rows[0]==undefined){
-      console.log('아이디를 확인해주세요')
-      UserLoginDB.push({
-        Loginresult : '아이디를 확인해주세요'
-      })
-    }else{
-      UserLoginDB.push({
-        Loginresult : '로그인 완료',
-        User_Name : rows[0].User_Name, 
-        User_StoreName: rows[0].User_StoreName,
-        User_Id : rows[0].new_tablecol2,
-      })
+
+    if (rows[0] === undefined) {
+      console.log('아이디를 확인해주세요');
+      return res.send({ message: '아이디를 확인해주세요' });
+    } else {
       console.log('로그인 완료');
+
+      // JWT 토큰 생성
+      const token = jwt.sign({
+        User_Id: rows[0].new_tablecol2,
+        User_Name: rows[0].User_Name,
+        User_StoreName: rows[0].User_StoreName
+      }, 'your_secret_key', { expiresIn: '1h' });
+
+      return res.send({
+        token: token,
+        User_Name: rows[0].User_Name,
+        User_StoreName: rows[0].User_StoreName,
+        User_Id: rows[0].new_tablecol2
+      });
     }
-    return res.send(UserLoginDB);     
-  })
-})
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Hello`)
@@ -294,7 +297,7 @@ connection.query(query, [time, userName, userId, storeName, isRunning , today], 
 
 
 app.post('/schdulefinish',(req,res) =>{ 
-  const { isRunning, finishTime} = req.body;
+  const { isRunning, finishTime } = req.body;
   console.log(finishTime , isRunning)
   const query = 'SELECT * FROM schedule WHERE StartTime = ?';
   connection.query(query, [scheduleData.time], (err, results) => {
@@ -322,13 +325,15 @@ app.post('/schdulefinish',(req,res) =>{
   })
 })
 
-app.post('/schduleState', (req, res) => {
-  const { isRunning } = req.body;
+app.post('/RunState', (req, res) => {
+  const { isRunning,userId } = req.body;
   console.log(isRunning);
+  console.log(userId)
   console.log(scheduleData.time);
 
-  const query = 'SELECT * FROM schedule WHERE StartTime = ?';
-  connection.query(query, [scheduleData.time], (err, results) => {
+  
+  const query = 'SELECT * FROM schedule WHERE MemberId = ? AND finishTime IS NULL';
+  connection.query(query, [userId], (err, results) => {
     if (err) {
       console.error('Error executing query:', err);
       return res.status(500).send('Database query error');
@@ -337,13 +342,13 @@ app.post('/schduleState', (req, res) => {
     console.log(results); // 쿼리 결과 출력
 
     if (results.length === 0) {
-      return res.status(404).send('No matching records found');
+      return res.status(404).send('No ma  tching records found');
     }
 
     const runningState = isRunning ? '1' : '0';
-    const updateQuery = 'UPDATE schedule SET runningState = ? WHERE StartTime = ?';
+    const updateQuery = 'UPDATE schedule SET runningState = ? WHERE MemberId = ? AND finishTime IS NULL';
 
-    connection.query(updateQuery, [runningState, scheduleData.time], (updateErr, updateResults) => {
+    connection.query(updateQuery, [runningState, userId], (updateErr, updateResults) => {
       if (updateErr) {
         console.error('Error executing update query:', updateErr);
         return res.status(500).send('Database update error');
@@ -379,14 +384,13 @@ app.post('/schduleLoding', (req, res) => {
     const userStoreName = results[0].User_StoreName;
     console.log(userStoreName); // 예: '대구가톨릭대학교' 출력
 
-    // 두 번째 쿼리: schedule 테이블에서 today와 userStoreName이 일치하는 값 가져오기
     const scheduleQuery = `
     SELECT * 
     FROM schedule 
-    WHERE (today = ? OR runningState = '0') 
-    AND StoreName = ?
+    WHERE StoreName = ?
+    AND finishTime IS NULL
   `;
-  connection.query(scheduleQuery, [today, userStoreName], (error, scheduleResults) => {
+  connection.query(scheduleQuery, [userStoreName], (error, scheduleResults) => {
     if (error) { 
       console.error('Error fetching schedule data:', error);
       return res.status(500).send('Internal Server Error');

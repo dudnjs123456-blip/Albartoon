@@ -135,54 +135,64 @@ export function MainNab() {
     */
     const[User_Id,setUser_Id] = useState('')
 
-    const onSetsetUserId = useCallback(e=>{
-        setUser_Id(e.target.value);
-    },[])
+const onSetsetUserId = useCallback(e=>{
+    setUser_Id(e.target.value);
+},[])
 
-    const[User_password,setUser_password] = useState('')
-            
-    const onSetsetUserpassword = useCallback(e=>{
-        setUser_password(e.target.value);
-    },[]);
+const[User_password,setUser_password] = useState('')
 
-// 로그인 버튼 클릭 기능
- function useUserLoginSubmitHander(e){
+const onSetsetUserpassword = useCallback(e=>{
+    setUser_password(e.target.value);
+},[]);
+
+function useUserLoginSubmitHander(e) {
     e.preventDefault();
-        fetch('http://localhost:10001/userLgoin',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                User_Id,
-                User_password
-            })
-        })
-        .then(response => response.json())
-        .then((data) => {
-            if(data[data.length-1].Loginresult=='로그인 완료'){
-                alert(data[data.length-1].Loginresult)
-                        dispatch({type:"stateLogin/up", step : data[data.length-1].User_Name})
-                        dispatch({type:"StoreName/Login", LoginDATA : data[data.length-1].User_StoreName})  
-                        dispatch({type:"UserID/Login", ChangeID : data[data.length-1].User_Id})  
-                handleClose();
-    
-                // window.location.reload();
-                // 강제 새로고침
-            }else{
-                alert(data[data.length-1].Loginresult)
-            }
-        })
-        /*
-        const UserDBlength = UserLoginDB.length;
-        if(UserLoginDB[UserDBlength-1].Loginresult == '로그인 완료'){
-            alert(UserLoginDB[UserDBlength-1].Loginresult);
-            // 
-        }else{
-            alert(UserLoginDB[UserDBlength-1].Loginresult);
-        
-        }*/
-}
+    fetch('http://localhost:10001/userLogin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        User_Id,
+        User_password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.token) {
+          // 로그인 성공
+          const token = data.token;
+          console.log('Token:', token); // 토큰 콘솔 출력
+          localStorage.setItem('token', token); // 토큰 저장
+          dispatch({ type: 'stateLogin/up', step: data.User_Name });
+          dispatch({ type: 'StoreName/Login', LoginDATA: data.User_StoreName });
+          dispatch({ type: 'UserID/Login', ChangeID: data.User_Id });
+          handleClose();
+
+               // 30초 후에 자동으로 로그아웃
+               const logoutTimer = setTimeout(() => {
+                localStorage.removeItem('token');
+                dispatch({type:"StoreName/up", LoginDATA : ''}) 
+                dispatch({type:"stateLogin/Loginout", step : 'hi' })
+                dispatch({type:"UserID/Login", ChangeID : ''})  
+      
+                alert('자동 로그아웃되었습니다.');
+              }, 3000000);
+      
+              // 페이지 이동 시 타이머 해제
+              window.addEventListener('beforeunload', () => {
+                clearTimeout(logoutTimer);
+              });
+        } else {
+          // 로그인 실패
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  
 
 
 
