@@ -2,3 +2,4 @@ fetch/client/mo/node_modules/.cache/**/* filter=lfs diff=lfs merge=lfs -text
 *.pack filter=lfs diff=lfs merge=lfs -text
 node_modules/** filter=lfs diff=lfs merge=lfs -text
 fetch/client/mo/node_modules/node-sass/build/Release/sass.a filter=lfs diff=lfs merge=lfs -text
+fetch/client/mo/node_modules/.cache/**/*.pack filter=lfs diff=lfs merge=lfs -text
