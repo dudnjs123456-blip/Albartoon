@@ -1,14 +1,20 @@
 import { QRCodeCanvas } from 'qrcode.react';
 import React, { useState,useEffect ,useRef} from 'react';
 import { MainNab } from './MainPage';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css'; // css import
+import { Modal, Button } from 'antd'; // 모달과 버튼을 Ant Design으로 사용
+import { useTable } from 'react-table';
 // 리덕스
 import { useSelector } from "react-redux"; // import 해주세요.
 import './Schedule.css';
 
 function Schedule(){
+
     const [buttonState, setButtonState] = useState('출근'); // 초기 상태는 '출근'
     const [StartTime, setStartTime] = useState([]);
 
+  
     const extractHour = (timeString) => {
       // 시간 문자열에서 시간 부분만 추출 (예: "10:2:16" -> "10")
       return timeString.split(':')[0];
@@ -387,16 +393,8 @@ useEffect(() => {
     return (
         <body>
         <MainNab />
-        <h1 className="qrCodeH">우리가게 QR코드</h1>
-        <section className='qr'>
-          <QRCodeCanvas
-            value="/" 
-            includeMargin
-            fgColor="#393E46"
-            size={400}
-          />
-        </section>  
-
+        {/* <h1 className="qrCodeH">우리가게 QR코드</h1> */}
+      
         <section className='qrPage_MainSextion'>
           <div className='qrPage_Schedule'>
             <div className='currentDateTime'>
@@ -448,11 +446,7 @@ useEffect(() => {
         const startTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
 
         let diffInSeconds = Math.floor((now - startTime) / 1000);
-        if (dayDifference === 1) {
-          diffInSeconds += 24 * 3600; // 1일 차이일 경우
-        } else if (dayDifference > 1) {
-          diffInSeconds += 24 * 3600 * dayDifference; // 2일 이상 차이일 경우
-        }
+   
 
         const hoursDiff = Math.floor(diffInSeconds / 3600);
         const minutesDiff = Math.floor((diffInSeconds % 3600) / 60);
@@ -463,7 +457,7 @@ useEffect(() => {
 
         return (
           <>
-            <p>    ({formattedDay}) 근무시작 시간 : {foundItem.StartTime}</p>
+            <p>({formattedDay}) 근무시작 시간 : {foundItem.StartTime}</p>
             <p>경과 시간: {formattedDiff}</p>
           </>
         );

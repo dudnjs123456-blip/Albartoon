@@ -6,6 +6,16 @@
     border: 2px solid green;
 }
 
+.calendarModal{
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+.Calendar{
+    position: absolute;
+    top: 50px;
+    left: 220px;
+}
 .qrCodeH{
     position: absolute;
     top: 20%;
@@ -13,11 +23,7 @@
 }
 
 .qrPage_MainSextion{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 50%;
-    background: blanchedalmond;
+    background: rgb(97, 85, 68);
 }
 
 .qrPage_Schedule{

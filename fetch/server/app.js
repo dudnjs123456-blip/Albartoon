@@ -5,7 +5,7 @@ const cors = require('cors');
 const compression = require("compression");
 
 app.use(compression());
-app.use(cors());
+app.use(cors());  
 app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
 
@@ -14,8 +14,6 @@ const mysql      = require('mysql2');
 const dbconfig   = require('./sql.js');
 const connection = mysql.createConnection(dbconfig);
 
-
-
 // configuration =========================
 app.set('port', process.env.PORT || 3001);
 app.get('/', (req, res) => {
@@ -23,7 +21,7 @@ res.send('Root');
 }); 
 
 
-// 로그인 중복확인
+// 로그인 중복확인  
 app.get('/', (req, res) => {  
   res.send('Hello World!');
   console.log(req.ip);

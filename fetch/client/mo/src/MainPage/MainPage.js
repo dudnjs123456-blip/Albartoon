@@ -22,7 +22,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 // Ma Ui
-import Card from '@mui/material/Card';
+import Card from '@mui/material/Card';  
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -217,6 +217,9 @@ function useUserLoginSubmitHander(e) {
                 </Link>
                 <Link to={'/MainNoticeBoard'}>
                 <li>알바 게시판</li>
+                </Link>
+                <Link to={'/SchduleSearch'}>
+                <li>스케줄 검색</li>
                 </Link>
             </ul>
 

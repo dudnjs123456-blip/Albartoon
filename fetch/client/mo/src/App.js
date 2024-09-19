@@ -16,6 +16,7 @@ import Schedule from './MainPage/Schedule';
 import MainNoticeBoard from './MainNoticeBoard';
 import Loding from './MainPage/Loding';
 import NewStore from './NewStore';
+import SchduleSearch from './MainPage/SchduleSearch'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       <Route path='Loding' element={<Loding/>}/>
       <Route path='/MainNoticeBoard' element={<MainNoticeBoard/>}/>
       <Route path='/NewStore' element={<NewStore/>}/>
+      <Route path='/SchduleSearch' element={<SchduleSearch/>}/>
     </Routes> 
     </body>
   )
