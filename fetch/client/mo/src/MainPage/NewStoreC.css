@@ -1,0 +1,173 @@
+/* NewStoreC.css (이전 NoticeDetail.css 기반) */
+
+.detail-container {
+    position: relative; /* 👈 중요: 자식 요소(top-right-elements)의 absolute 배치를 위한 기준점 */
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    margin-top: 100px; /* 기존 margin-top 유지 */
+    padding-top: 60px; /* 👈 상단 버튼과 시간을 위한 충분한 패딩 공간 확보 */
+}
+
+/* 🔽 새로 추가: 상단 오른쪽 요소들을 감싸는 컨테이너 */
+.top-right-elements {
+    position: absolute;
+    top: 15px;      /* detail-container 상단으로부터의 거리 */
+    right: 20px;    /* detail-container 오른쪽으로부터의 거리 (기존 padding과 일치) */
+    display: flex;  /* 버튼과 텍스트를 가로로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    gap: 10px;      /* 요소들 간의 간격 */
+}
+
+/* 🔽 새로 추가: '나가기' 버튼 스타일 */
+.exit-button {
+    background-color: #f44336; /* 빨간색 */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.exit-button:hover {
+    background-color: #d32f2f;
+}
+
+/* 🔽 새로 추가: 작성일자(.post-timestamp) 스타일 */
+.post-timestamp {
+    font-size: 0.85em; /* 제목보다 살짝 작게 */
+    color: #a0a0a0; /* 회색톤으로 살짝 흐리게 */
+    text-align: right; /* 텍스트 오른쪽 정렬 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+    /* 배경색, 보더, 패딩 등은 제거하여 '글자로만' 보이게 합니다. */
+}
+
+/* 🔽 기존 .detail-title 스타일 수정: top-right-elements로 인해 margin-top 조정 */
+.detail-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #3f51b5; /* Primary brand color */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    text-align: center;
+    margin-top: 0; /* 👈 top-right-elements 공간 확보를 위해 margin-top 0으로 */
+}
+
+.detail-content {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+    white-space: pre-wrap; /* 줄 바꿈 유지 */
+}
+
+.detail-info-group {
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 2-3컬럼 레이아웃 */
+    gap: 15px;
+}
+
+.detail-info-item {
+    background-color: #f9f9f9;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.detail-info-item .label {
+    font-weight: bold;
+    color: #2f63ff; /* Accent color */
+    min-width: 80px; /* 라벨 너비 고정 */
+}
+
+.detail-info-item .value {
+    color: #333;
+    flex-grow: 1;
+}
+
+.detail-container.error {
+    background-color: #ffe0e0;
+    border-color: #f44336;
+    color: #f44336;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 🔽 새로 추가: '지원하기' 버튼 컨테이너 및 버튼 스타일 */
+.apply-button-container {
+    text-align: center; /* 버튼을 중앙에 배치 */
+    margin-top: 30px; /* 상세 정보 그룹과의 간격 */
+    padding-top: 20px;
+    border-top: 1px dashed #e0e0e0; /* 상단 구분선 */
+}
+
+.apply-button {
+    background-color: #4c6baf; /* 녹색 */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.apply-button:hover {
+    background-color: #0a0e17;
+    transform: translateY(-2px);
+}
+
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .detail-container {
+        margin: 20px 10px;
+        padding: 15px;
+        padding-top: 50px; /* 👈 모바일에서 상단 패딩 조정 */
+    }
+    /* 🔽 모바일에서 top-right-elements 위치 조정 */
+    .top-right-elements {
+        position: static; /* 일반 흐름에 따라 배치 */
+        margin-bottom: 10px; /* 제목과의 간격 */
+        justify-content: flex-end; /* 오른쪽 정렬 */
+        padding-right: 0; /* 기존 padding-right가 있었다면 제거 */
+        order: -1; /* 가장 상단으로 정렬되도록 order 변경 */
+    }
+    .post-timestamp {
+        font-size: 0.75em;
+    }
+    .exit-button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+    /* 🔽 모바일에서 detail-title 조정 */
+    .detail-title {
+        font-size: 1.8em;
+        margin-top: 0; /* 상단 요소들이 static으로 변경되므로 0으로 설정 */
+    }
+    .detail-content {
+        font-size: 1em;
+    }
+    .detail-info-group {
+        grid-template-columns: 1fr; /* 모바일에서는 1컬럼 */
+    }
+    .apply-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}

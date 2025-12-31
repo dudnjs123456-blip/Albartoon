@@ -1,0 +1,281 @@
+/* src/components/JobPostingsList/JobPostingsList.css */
+/* 또는 프로젝트 내 적절한 위치에 파일 생성 */
+
+/* Note: .Mainbody 스타일은 일반적으로 전역 CSS 파일 (예: App.css, index.css)에 두는 것이 좋으나,
+   현재 컴포넌트의 스타일과 함께 옮겨 달라고 하셨으니 여기에 포함합니다.
+   실제 프로젝트에서는 전역 스타일과 컴포넌트 스타일을 분리하는 것이 좋습니다. */
+.Mainbody{
+    padding: 0%;
+    margin: 0%;
+    background-color: #f8f9fa; /* 메인 바디 배경색 */
+}
+
+.job-postings-list-container {
+    margin-top: 100px;
+    background-color: #f8f9fa; /* 목록 컨테이너 배경색 */
+    border-radius: 8px;
+    max-height: 100%;
+    max-width: 100%;
+
+}
+.job-postings-list-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;    
+    font-weight: bold;
+}
+.job-postings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+.job-posting-item-link {
+    text-decoration: none; /* Link 밑줄 제거 */
+    color: inherit; /* 링크 색상 제거 */
+    display: block;
+}
+.job-posting-item {
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(64, 32, 32, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure uniform height if in a grid */
+}
+.job-posting-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-color: #007bff; /* 호버 시 테두리 색상 변경 */
+}
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+.job-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #212529;
+    margin: 0;
+    flex-grow: 1;
+    word-break: break-word; /* 긴 제목 처리 */
+}
+.posted-date {
+    font-size: 0.8em;
+    color: #6c757d;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    margin-left: 10px;
+}
+.company-name {
+    font-size: 0.9em;
+    color: #495057;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.item-details span {
+    display: block;
+    font-size: 0.85em;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+.item-details span:last-child {
+    margin-bottom: 0;
+}
+.item-footer {
+    margin-top: 15px;
+    text-align: right;
+    font-size: 0.75em;
+    color: #6c757d;
+}
+.pagination, .action-buttons {
+    margin-left: 750px;
+    text-align: center;
+    margin-top: 30px;
+}
+.pagination span, .pagination button {
+    margin: 0 5px;
+}
+.create-job-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+.create-job-button:hover {
+    background-color: #218838;
+}
+
+/* 추가로 필요한 페이지네이션 버튼 스타일 (이전 대화에서 빠진 부분) */
+.page-button {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.page-button:hover:not(:disabled) {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+.page-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+.page-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+ .region-select-bar-container {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            gap: 15px; /* 선택된 지역 표시와 필터 바 사이 간격 */
+        }
+        .selected-region-display {
+            background-color: #e6f7ff; /* 배경색 */
+            border: 1px solid #91d5ff; /* 테두리색 */
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: #1890ff; /* 텍스트색 */
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .region-filter-bar {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            flex-shrink: 0;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .region-filter-bar h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #4CAF50;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .region-list-container {
+            display: flex;
+            flex-direction:row;
+            gap: 10px;  
+        }
+        .main-region-item {
+            width: 200px;
+                 border: 1px solid black;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        .main-region-item:hover {
+            border-color: #cceeff;
+        }
+        .main-region-button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main-region-button:hover {
+            background-color: #45a049;
+        }
+        .main-region-button.active {
+            background-color: #388e3c;
+        }
+        /* 화살표 토글은 CSS로만 구현 시 어려워 JS에서 구현할 수 있도록 ::after 삭제 (옵션) */
+        /* .main-region-button::after { content: '▼'; font-size: 0.8em; transition: transform 0.3s ease; } */
+        /* .main-region-button.active::after { transform: rotate(180deg); } */
+
+        .sub-region-list {
+            background-color: #f0f8ff;
+            padding: 10px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+        .sub-region-item { /* 각 구/군 아이템 */
+            overflow: hidden;
+        }
+        .sub-region-button {
+            width: 100%;
+            padding: 8px 15px 8px 30px; /* 들여쓰기 */
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 0.95em;
+            color: #555;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .sub-region-button:hover {
+            background-color: #e6f7ff;
+            color: #007bff;
+        }
+        .sub-region-button.active {
+            background-color: #d0e7ff;
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .dong-list {
+            background-color: #f8ffff; /* 동 목록 배경색 */
+            padding: 5px 0;
+            border-top: 1px solid #e9f5f5;
+        }
+        .dong-button {
+            width: 100%;
+            padding: 5px 15px 5px 45px; /* 더 깊은 들여쓰기 */
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 0.9em;
+            color: #777;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+        .dong-button:hover {
+            background-color: #edf7fa;
+            color: #0088cc;
+        }
+        .dong-button.active {
+            background-color: #cceeff;
+            color: #004466;
+            font-weight: bold;
+        }

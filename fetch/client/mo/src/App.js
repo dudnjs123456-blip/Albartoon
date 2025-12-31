@@ -17,7 +17,8 @@ import MainNoticeBoard from './MainNoticeBoard';
 import Loding from './MainPage/Loding';
 import NewStore from './NewStore';
 import SchduleSearch from './MainPage/SchduleSearch'
-
+import Gonogo from './MainPage/Gonogo';
+import NewStoreC from './MainPage/NewStoreC';
 
 function App() {
   return (
@@ -38,8 +39,10 @@ function App() {
       <Route path='/Schedule' element={<Schedule/>}/>
       <Route path='Loding' element={<Loding/>}/>
       <Route path='/MainNoticeBoard' element={<MainNoticeBoard/>}/>
-      <Route path='/NewStore' element={<NewStore/>}/>
+         <Route path="/NewStore" element={<NewStore/>} /> 
       <Route path='/SchduleSearch' element={<SchduleSearch/>}/>
+      <Route path='/Gonogo' element={<Gonogo/>}/>
+       <Route path='/NewStoreC/:location' element={<NewStoreC/>}/>
     </Routes> 
     </body>
   )

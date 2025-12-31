@@ -1,3 +1,8 @@
+.Mainbody{
+    position: absolute;
+    /* background: rgb(45, 45, 45) */
+}
+
 .qr{
     position: absolute;
     width: 408px;
@@ -13,8 +18,8 @@
 }
 .Calendar{
     position: absolute;
-    top: 50px;
-    left: 220px;
+    top: 40px;
+    left: 600px;
 }
 .qrCodeH{
     position: absolute;
@@ -23,17 +28,35 @@
 }
 
 .qrPage_MainSextion{
-    background: rgb(97, 85, 68);
+     display: flex;
+                    justify-content: center;
+                    padding: 20px;
+                    background-color: #f8f9fa; /* 배경색 통일 */
+                    min-height: calc(100vh - 60px); /* MainNab 높이만큼 빼줌 */
 }
 
 .qrPage_Schedule{
     position: absolute;
-    width: 80%;
-    height: 90%;
-    border: 1px solid black;
-    left: 10%;
-    top: 10%;
+       background-color: white;
+                    top: 8%;
+                    border: 1px solid #e0e0e0;
+                    border-radius: 8px; /* 둥근 모서리 */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+                    padding: 30px;
+                    max-width: 900px; /* 테이블 크기에 맞춰 조절 */
+                    width: 100%;
+                    box-sizing: border-box;
+                    text-align: center; /* 내부 요소 중앙 정렬 */   
 }
+
+.schduleTable{
+     width: 100%;
+                    border-collapse: collapse; /* 테이블 셀 간의 경계선 합치기 */
+                    margin-bottom: 30px;
+                    font-size: 0.95em;
+}
+
+
 
 .qrPage_Schedule h1{
     text-align: center;
@@ -42,19 +65,26 @@
 
 .qrPage_Schedule table{
     width: 100%;
+    
 }
+/* 테이블 맨 윗줄 */
 .qrPage_Schedule table tr th{
-    border: 1px solid black;
+    background-color: rgb(52, 52, 52);
+    color: white;
     justify-content: space-around;
 }
 
 .qrPage_Schedule table tr{
-    border: 1px solid black;
+    border: 1px solid rgba(133, 133, 133, 0.543);
+   background-color: #fcfdfe; /* 아주 연한 파란색 */
     text-align: center;
+    z-index: 100;
 }
 
 .qrPage_Schedule table td{
-    border: 1px solid black;
+    border: 1px solid rgba(178, 178, 178, 0.639);
+    background-color: rgba(0, 0, 0, 0.497);
+    color: white;
 }
 
 .qrPage_Schedule table tr :nth-child(1){
@@ -77,5 +107,48 @@
 }
 
 .currentDateTime{
-    margin-left: 200px;
+    position: relative;
+    top: 65px;
+    margin-right: 500px;
+    color: white;
+          font-size: 0.9em;
+                    color: #6c757d;
+                    margin-bottom: 15px;
 }
+
+.storeName{
+      font-size: 2em;
+                    color: #343a40;
+                    margin-bottom: 25px;
+                    font-weight: bold;
+}
+
+.formattedDay{
+
+      font-size: 1.5em;
+                    color: #343a40;
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+}
+
+/* Startbutton의 기본 스타일 */
+.Startbutton {
+       background-color: #007bff; /* 주 버튼 색상 */
+                    color: white;
+                    border: none;
+                    padding: 12px 25px;
+                    border-radius: 5px;
+                    font-size: 1.1em;
+                    cursor: pointer;
+                    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+    .Startbutton:hover {
+                    background-color: #0056b3;
+                    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+                }
+
+                .Startbutton:active {
+                    transform: translateY(0);
+                }
+  

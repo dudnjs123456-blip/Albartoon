@@ -2,21 +2,48 @@
     margin: 0%;
     padding: 0%;
 }
-.firstpage{
+.firstpage {
     position: absolute;
     width: 100%;
-    height: 200%;
+    height: 100%; /* 100%로 변경하여 전체 화면을 차지하도록 설정 */
+    overflow: hidden; /* 스크롤 숨기기 */
+    background: rgb(45, 45, 45);
 }
 
-.chatting{
+
+.chatting {
+    /* 기존 포지셔닝 및 크기 유지 (이 부분은 네 레이아웃에 맞춰 그대로 사용하면 돼!) */
     position: absolute;
     left: 25%;
-    top: 5%;
+    top: 8%;
     width: 50%;
-    height: 900px;
-    border-radius: 10%;
-    border: solid ;
-    filter: drop-shadow(0.5px 0.5px 0.5px gray);
+    height: 90%;
+
+    /* ✨ 아이패드 '스크린' 부분의 기본 스타일 (이 div가 화면처럼 보일 거야!) */
+    background-color: #fcfcfc; /* 거의 흰색에 가까워서 실제 화면처럼 밝게 보여! */
+    border-radius: 28px; /* 아이패드처럼 부드럽고 적당히 둥근 모서리 곡률이야! */
+    overflow: hidden; /* 내부 내용이 이 둥근 모서리를 넘어가지 않도록 깔끔하게 잘라줘! */
+    
+    /* ✨ 아이패드 '외곽 프레임' 및 '베젤' 느낌 주기 (이게 마법이야! ✨) */
+    /* 여러 개의 box-shadow를 겹쳐서 베젤과 깊은 그림자 효과를 동시에 구현했어! */
+    box-shadow:
+        inset 0 0 0 3px #1a1a1a, /* 1. 내부 베젤: 얇고 진한 검은색 선이 안쪽으로 생겨! */
+        0 0 0 8px rgb(1, 1, 1), /* 2. 외부 프레임: 스크린 바깥의 어두운 회색 프레임처럼 보여! */
+        0 25px 50px rgba(0, 0, 0, 0.5), /* 3. 깊은 그림자: 아래로 떨어져서 떠 있는 듯한 입체감을 줘! */
+        inset 0 0 15px rgba(0, 0, 0, 0.05); /* 4. 스크린 내부 그림자: 화면이 살짝 들어간 듯한 미묘한 깊이감을 더해! */
+    
+    /* 기존 border와 filter는 box-shadow로 대체되므로 이제 필요 없어! */
+    border: none; /* 더 이상 일반 테두리는 필요 없어! */
+    filter: none; /* drop-shadow는 box-shadow로 대체되었으니 제거! */
+
+    /* ✨ 내부 콘텐츠를 위한 패딩 (실제 채팅 내용이 베젤 안쪽으로 들어가도록) */
+    padding: 25px; /* 스크린 안쪽으로 내용이 들어갈 여백을 줘! */
+    box-sizing: border-box; /* 패딩이 width/height에 포함되도록 계산해서 크기 유지를 도와줘! */
+
+    /* ✨ 아이패드 느낌의 폰트 및 기본 텍스트 색상 (선택 사항이지만 추천!) */
+    color: #333; /* 내부 텍스트 색상 (어두운 베젤과 대비되도록 어두운 회색으로!) */
+    font-family: 'SF Pro Display', 'Roboto', sans-serif; /* 아이패드에 사용되는 폰트와 비슷한 느낌의 폰트를 지정! */
+    /* 만약 'SF Pro Display' 폰트가 없다면, 시스템 폰트나 웹 폰트를 연결해야 해요! */
 }
 
 .main_screen{
@@ -50,11 +77,12 @@
     top: 92%;
     left: 85.4%;
 }
-
-.chatt_log{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.chat-log {
+    flex: 1; /* 채팅 영역이 남은 공간을 차지하도록 설정 */
+    overflow-y: auto; /* 세로 스크롤 가능 */
+    padding: 10px; /* 패딩 추가 */
+    border-top: 2px solid #ccc; /* 위쪽 경계선 효과 추가 */
+    margin-top: 10px; /* 경계선과 위 요소 간의 여백 */
 }
 
 .chatt_log li{
@@ -73,4 +101,169 @@
     height: 25px;
     border: 0.5px solid gray;
     border-radius: 50%;
+}
+
+.chat-message {
+    display: flex;
+    margin: 5px 0;
+}
+
+.self {
+    justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.other {
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.message-container {
+    max-width: 70%; /* 메시지 최대 너비 설정 */
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f1f1f1; /* 배경색 */
+}
+
+.self .message-container {
+    background-color: #d1e7dd; /* 왼쪽 메시지 배경색 */
+}
+
+.other .message-container {
+    background-color: #f8d7da; /* 오른쪽 메시지 배경색 */
+}
+
+.main_screen {
+    position: relative; /* 상대 위치로 설정 */
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    border: 1px solid black;
+    display: flex;
+    /* background: red; */
+    flex-direction: column; /* 세로 방향으로 배치 */
+    overflow: hidden; /* 기본적으로 오버플로우 숨기기 */
+}
+
+.chat-log {
+    flex: 1; /* 채팅 영역이 남은 공간을 차지하도록 설정 */
+    overflow-y: auto; /* 세로 스크롤 가능 */
+    padding: 10px; /* 패딩 추가 */
+}
+
+.input-container {
+    
+    display: flex; /* 플렉스 박스 사용 */
+    padding: 10px; /* 여백 추가 */
+    background-color: white; /* 배경색 설정 */
+    border-top: 1px solid #ccc; /* 상단 경계선 추가 */
+}
+
+.input-container input {
+    flex: 1; /* 입력창이 가능한 공간을 차지하도록 설정 */
+    margin-right: 10px; /* 버튼과 간격 추가 */
+}
+
+.input-container button {
+    width: 100px; /* 버튼 너비 설정 */
+}
+
+
+.leave-button {
+    position: absolute; /* 절대 위치 설정 */
+    top: 10px; /* 상단 여백 */
+    right: 10px; /* 우측 여백 */
+    padding: 5px 10px; /* 여백 추가 */
+    font-size: 12px; /* 글자 크기 조정 */
+}
+
+.hover-bar {
+    margin-top: 100px;
+    width: 30%;
+    height: 64%;
+    border: 1px solid black;
+}
+
+
+
+.menu-icon{
+    z-index: 100;
+}
+
+.time{
+    font-size: 8px;
+    color: blue;
+}
+
+/* ✨✨✨ 아이패드 홈버튼 스타일! ✨✨✨ */
+.ipad-home-button {
+    position: absolute; /* 부모 요소인 .chatting div 기준으로 위치를 잡을 거야! */
+    bottom: 30px; /* .chatting div의 바닥에서 20px 위에 위치 */
+    left: 50%; /* 가로 중앙에 오도록 왼쪽 끝에서 50% 지점 */
+    transform: translateX(-50%); /* 정확한 중앙 정렬을 위해 자신 너비의 절반만큼 왼쪽으로 이동 */
+    
+    width: 60px; /* 버튼의 너비 */
+    height: 60px; /* 버튼의 높이 (너비와 같아야 완벽한 원이 돼!) */
+    border-radius: 50%; /* 50%로 설정하면 완벽한 원이 돼! */
+    
+    background-color: #444; /* 버튼의 기본 배경색 (어두운 회색) */
+    border: 1px solid #666; /* 버튼의 얇은 테두리 (살짝 밝은 회색) */
+    
+    /* ✨ 홈버튼의 입체감을 위한 그림자 효과! ✨ */
+    box-shadow: 
+        inset 0 2px 5px rgba(0,0,0,0.5), /* 안쪽 그림자: 버튼이 살짝 눌린 듯한 깊이감 */
+        0 1px 0 rgba(255,255,255,0.1), /* 위쪽 하이라이트: 살짝 빛나는 느낌 */
+        0 2px 5px rgba(0,0,0,0.3); /* 바깥쪽 그림자: 버튼이 살짝 떠 있는 듯한 입체감 */
+    
+    cursor: pointer; /* 마우스 커서를 올리면 손가락 모양으로 바뀌어서 클릭할 수 있다는 걸 알려줘! */
+    z-index: 30; /* 다른 요소들 위에 표시되도록 z-index를 높게 설정! */
+}
+
+/* ✨✨✨ 홈버튼 안의 터치ID/사각형 아이콘 (선택 사항) ✨✨✨ */
+/* 홈버튼 안에 작은 사각형 모양을 추가해서 더 디테일하게 꾸밀 수 있어! */
+.ipad-home-button::before {
+    content: ''; /* 가상 요소는 content 속성이 필수! */
+    position: absolute;
+    top: 50%; /* 중앙 정렬 */
+    left: 50%; /* 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+    width: 20px; /* 아이콘의 너비 */
+    height: 20px; /* 아이콘의 높이 */
+    border-radius: 3px; /* 살짝 둥근 사각형 모양 */
+    border: 1px solid #777; /* 아이콘 테두리 */
+    background-color: #555; /* 아이콘 배경색 (버튼보다 살짝 밝게) */
+}
+
+/* ✨✨✨ 아이패드 스피커 구멍 (그릴) 스타일! ✨✨✨ */
+.ipad-speaker-grill {
+    position: absolute; /* 부모 요소인 .chatting div 기준으로 위치를 잡을 거야! */
+    top: 60px; /* .chatting div의 상단에서 18px 아래에 위치 (베젤 안쪽) */
+    left: 50%; /* 가로 중앙에 오도록 왼쪽 끝에서 50% 지점 */
+    transform: translateX(-50%); /* 정확한 중앙 정렬을 위해 자신 너비의 절반만큼 왼쪽으로 이동 */
+    
+    width: 100px; /* 스피커 구멍의 너비 */
+    height: 5px; /* 스피커 구멍의 높이 (얇게!) */
+    background-color: #222; /* 어두운 회색 (구멍처럼 보이게) */
+    border-radius: 2.5px; /* 모서리를 둥글게 해서 부드러운 느낌 */
+    
+    z-index: 11; /* 다른 요소들 위에 표시되도록 z-index를 높게 설정! */
+    /* Optional: 살짝 눌린 듯한 입체감을 위한 안쪽 그림자 */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.5); 
+}
+
+/* ✨✨✨ 아이패드 앞면 카메라 스타일! ✨✨✨ */
+.ipad-front-camera {
+    position: absolute; /* 부모 요소인 .chatting div 기준으로 위치를 잡을 거야! */
+    top: 60px; /* 스피커 구멍과 같은 높이 */
+    /* 아이패드 카메라는 보통 상단 베젤의 왼쪽이나 오른쪽에 있어. 여기서는 왼쪽으로 배치해볼게! */
+    left: calc(50% - 100px); /* 중앙에서 왼쪽으로 100px 이동 (조절 가능!) */
+    /* 또는 오른쪽으로 배치하고 싶다면: right: 30px; */
+    
+    width: 10px; /* 카메라 렌즈의 지름 */
+    height: 10px; /* 카메라 렌즈의 지름 (너비와 같아야 완벽한 원이 돼!) */
+    background-color: #000; /* 렌즈처럼 보이도록 완전 검은색 */
+    border-radius: 50%; /* 완벽한 원 */
+    
+    z-index: 11; /* 다른 요소들 위에 표시되도록 z-index를 높게 설정! */
+    /* Optional: 렌즈의 광택이나 깊이감을 위한 그림자 */
+    box-shadow: inset 0 0 2px rgba(255,255,255,0.1), 0 0 0 1px rgba(0,0,0,0.5);
 }

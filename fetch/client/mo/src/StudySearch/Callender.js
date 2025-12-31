@@ -38,7 +38,13 @@ function fetchData() {
     .then(data => {
       console.log('Fetched data:', data); // 로그 추가
       displayData(data);
-      setStoreName(data[0].StoreName);  // storename 값을 상태로 저장
+
+        // userStoreName을 상태로 저장
+  if (data.userStoreName) {
+    setStoreName(data.userStoreName);  // userStoreName 값을 상태로 저장
+  } else {
+    setStoreName(data[0].StoreName);  // storename 값을 상태로 저장
+  }
     })
     .catch(error => {
       console.error('Error fetching data:', error); // 에러 로그 추가
@@ -151,14 +157,15 @@ const extractMemoContent = (memo) => {
 const calendarStyle = {
   width: '80%',  // 원하는 너비
   height: '600px',  // 원하는 높이
-  margin: '0 auto'  // 중앙 정렬
+  margin: '0 auto',  // 중앙 정렬
+  color : 'white',
 };
 
 return (
-  <body>
+  <body className='MainBody'>
   <MainNab />
   <section className='callenderMain' style={calendarStyle}>
-    <div>{storeName ? storeName : 'Store name not set'}</div> {/* 로그 추가 */}
+    <div className='StoreMainName'>{storeName ? storeName : 'Store name not set'}</div> {/* 로그 추가 */}
     <FullCalendar
       plugins={[dayGridPlugin, interactionPlugin]}
       initialView="dayGridMonth"

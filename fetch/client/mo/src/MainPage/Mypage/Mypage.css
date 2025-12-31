@@ -1,129 +1,289 @@
-.body{
-    margin: 0%;
-    padding: 0%;
+/* src/components/Mypage/Mypage.css */
+
+/* ============================ */
+/* 1. 기본 스타일 및 리셋 */
+/* ============================ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif; /* 한글 폰트 추가 */
+    background-color: #f7f9fc; /* 전체 배경색 */
+    color: #333;
+    line-height: 1.6;
 }
 
-.Fist_section{
-    position: absolute;
-    width: 100%;
-    height: 150%;
-    border: 1px solid black;
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.Mypage_section{
-    position: absolute;
-    width: 100%;
-    height: 80%;
-    top: 4%;
-    border: 1px solid gray;
+/* ============================ */
+/* 2. 메인 레이아웃 */
+/* ============================ */
+.First_section { /* 클래스명 오타 수정: Fist_section -> First_section */
+    display: flex;
+    margin-top: 60px; /* 네브바 높이만큼 콘텐츠를 아래로 내립니다. */
+    min-height: calc(100vh - 100px); /* 전체 화면 높이에서 네브바 높이를 뺀 나머지 공간을 채웁니다. */
+    background-color: #f7f9fc; /* 섹션 배경색 */
 }
 
-.UserFeature{
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    background: rgba(89, 167, 170, 0.454);
+/* ============================ */
+/* 3. 마이페이지 사이드바 (.Mypage_section) */
+/* ============================ */
+.Mypage_section {
+    width: 280px; /* 사이드바 너비 고정 */
+    background-color: #ffffff;
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05); /* 부드러운 그림자 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 요소 중앙 정렬 */
+    border-right: 1px solid #eee;
+    flex-shrink: 0; /* 너비가 줄어들지 않도록 고정 */
 }
 
-.MyPage_First{
-    position: absolute;
-    width: 40%;
-    height: 5%;
-    left: 32%;
-    top: 5%;
-    font-size: 36px;
-}
-
-.User_image{
-    position: absolute;
-    top: 12%;
-    left: 25%;
-    width: 220px;
-    height: 220px;
-    border: 1px solid black;
-    border-radius: 100%;
-    background-image: url('유저이미지.png');
-    background-size: 100%;
-}
-
-.Mypage_name{
-    position: absolute;
-    width: 50%;
-    height: 3%;
-    left: 20%;
-    top: 32%;
-    border: 1px solid black;
-    background: white;
+.MyPage_First {
+    font-size: 1.9em;
+    font-weight: 700;
+    color: #5a75cf; /* 진한 파란색 계열 */
+    margin-bottom: 40px;
     text-align: center;
 }
 
-.User_Privacy{
-position: absolute;
-width: 50%;
-height: 30%;
-left: 20%;
-top: 35%;
-border: 1px solid black;
-list-style: none;
-margin: 0%;
-padding: 0%;
-background: white;
+/* ---------------------------- */
+/* 사용자 이미지 컨테이너 및 이미지 관련 스타일 */
+/* ---------------------------- */
+.User_image_container {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%; /* 원형 */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dbe4ff; /* 밝은 파란색 계열의 플레이스홀더 배경색 */
+    border: 4px solid #8ba1f4; /* 테두리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* 클릭 가능한 표시 */
+    overflow: hidden; /* 이미지가 원 밖으로 넘어가지 않게 */
+    position: relative; /* 자식 요소 절대 위치 기준 */
+    transition: all 0.2s ease;
 }
 
-.User_Privacy li{
-    margin-top: 20px;
+.User_image_container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.User_profile_image {
     width: 100%;
-    height: 10%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 원형에 맞춰 잘리도록 */
+    border-radius: 50%; /* 이미지 자체도 원형 */
+}
+
+.User_image_placeholder {
+    color: #666;
+    font-size: 0.85em;
+    text-align: center;
+    line-height: 1.2;
+    padding: 5px;
+}
+
+.Mypage_name {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
     text-align: center;
 }
-.Mypage_Mainsection{
-    position: absolute;
-    top: 4%;
-    left: 30%;
-    width: 70%;
-    height: 100%;
+
+/* ---------------------------- */
+/* 사용자 이름 입력 필드 스타일 */
+/* ---------------------------- */
+.Mypage_name_input {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+    width: 80%; /* 입력 필드 너비 */
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box; /* 패딩, 보더가 너비에 포함되도록 */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.Mypage_Mainsection_title{
-    position: absolute;
-    left: 40%;
-    top: 2%;
+.Mypage_name_input:focus {
+    border-color: #5a75cf;
+    box-shadow: 0 0 0 2px rgba(90, 117, 207, 0.2);
+    outline: none;
 }
 
-.Mypage_Mainsection_FirstSection{
-    position: absolute;
+
+.User_Privacy {
     width: 100%;
-    height: 30%;
-    top: 7%;
-    border: 1px solid black;
+    border-top: 1px solid #eee;
+    padding-top: 10px; /* 상단 여백 추가 */
 }
 
-.Mypage_Mainsection_SecondSection{
-    position: absolute;
-    width: 100%;
-    height: 30%;
-    top: 37%;
+.User_Privacy li {
+    padding: 15px 0;
+    font-size: 1.05em;
+    color: #555;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    display: flex; /* 버튼 정렬을 위해 추가 */
+    justify-content: center; /* 버튼 가운데 정렬 */
+    align-items: center;
 }
 
-.Mypage_Mainsection_FirstSection h1{
-    position: absolute;
-    left: 38.5%;
-    top: 3%;
+.User_Privacy li:last-child {
+    border-bottom: none; /* 마지막 li의 하단 테두리 제거 */
 }
 
-.Mypage_Mainsection_FirstSection ul{
-    position: absolute;
-    width: 33%;
-    height: 100%;
-    left: 2%;
-    top:20%;
+.User_Privacy li:not(:last-child):hover { /* 마지막 li(버튼 포함)는 제외하고 호버 효과 */
+    background-color: #eef2ff;
+    color: #5a75cf;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ---------------------------- */
+/* 상세내역 편집 관련 스타일 */
+/* ---------------------------- */
+.privacy-input-field {
+    width: 80%; /* 입력 필드 너비 */
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 5px 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.privacy-input-field:focus {
+    border-color: #5a75cf;
+    box-shadow: 0 0 0 2px rgba(90, 117, 207, 0.2);
+    outline: none;
+}
+
+.edit-button, .save-button, .cancel-button {
+    background-color: #5a75cf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 80px; /* 버튼 최소 너비 */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button:hover, .save-button:hover {
+    background-color: #4a64c4;
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    background-color: #a0a0a0;
+}
+
+.cancel-button:hover {
+    background-color: #888;
+    transform: translateY(-1px);
 }
 
 
-.Mypage_Mainsection_FirstSection ul:nth-child(3){
-    margin-left: 30%;
+/* ============================ */
+/* 4. 마이페이지 메인 콘텐츠 (.Mypage_Mainsection) */
+/* ============================ */
+.Mypage_Mainsection {
+    flex-grow: 1; /* 남은 공간을 모두 차지 */
+    padding: 40px;
+    background-color: #f7f9fc;
 }
 
-.Mypage_Mainsection_FirstSection ul:nth-child(4){
-    margin-left: 60%;
+.Mypage_Mainsection_title {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+/* ============================ */
+/* 5. 메인 섹션 - 알바 경력 사항 */
+/* ============================ */
+.Mypage_Mainsection_FirstSection {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+}
+
+.Mypage_Mainsection_FirstSection h1 {
+    font-size: 1.8em;
+    color: #5a75cf;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.Mypage_Mainsection_FirstSection ul {
+    display: flex; /* 가로로 정렬 */
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #f0f0f0;
+    padding-bottom: 10px;
+    padding-left: 0; /* ul의 기본 패딩 제거 */
+}
+
+.Mypage_Mainsection_FirstSection ul:last-of-type {
+    border-bottom: none; /* 마지막 ul의 하단 점선 제거 */
+}
+
+.Mypage_Mainsection_FirstSection li {
+    flex: 1; /* 균등하게 공간 배분 */
+    padding: 8px 10px;
+    font-size: 1em;
+    color: #555;
+    text-align: center; /* 내용 중앙 정렬 */
+}
+
+.Mypage_Mainsection_FirstSection ul:first-child li {
+    font-weight: 600; /* 알바 이름만 더 두껍게 */
+    color: #333;
+}
+
+/* ============================ */
+/* 6. 메인 섹션 - 두 번째 섹션 (Placeholder) */
+/* ============================ */
+.Mypage_Mainsection_SecondSection {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+    min-height: 200px; /* 임시 높이 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.Mypage_Mainsection_SecondSection::before {
+    content: "여기에 다른 내용이 들어갈 공간입니다."; /* Placeholder 텍스트 */
 }

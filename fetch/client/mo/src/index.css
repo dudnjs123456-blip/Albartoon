@@ -1,5 +1,6 @@
 body {
-  margin: 0;
+  margin: 0; /* 기본 여백 없애기 */
+  padding: 0; /* 기본 여백 없애기 */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

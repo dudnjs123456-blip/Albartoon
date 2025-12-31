@@ -1,33 +1,52 @@
+
 .Store_Name{
     position: absolute;
     width: 100%;
     height: 10%;
-    top: 12%;
-    left: 41%;
+    top: 13%;
+    left: 40.5%;
+    letter-spacing: 10px;
+    z-index: 100;
 }
 
 .Store_Name h1{
-    color: black;
+  font-size: 2.5em;
+    color: white;
+    margin: 0;
+    letter-spacing: -1px;
 }
+
+
 
 .aside{
     position: absolute;
     width: 10%;
-    height: 70%;
+    height: 63%;
     top: 20%;
-    box-shadow: 1px 1px 1px gray;
-    background-color: rgba(255, 255, 255, 0.817);
+   border-radius: 12px; /* 둥근 모서리 (카드 스타일 통일) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 그림자 효과 (카드 스타일 통일) */
+    padding: 25px; /* 내부 패딩 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 요소 중앙 정렬 */
+    box-sizing: border-box; /* 패딩이 너비/높이에 포함되도록 */
+    /* margin-right: 30px; */ /* 메인 콘텐츠와의 간격 (부모의 gap으로 대체) */
+    background-color: #ffffff; /* 흰색 배경 */
     z-index: 10;
 }
 
+.aside_storeName{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 35px;
+}
 
 .Store_Main{
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
-    background-color: rgba(255, 255, 255, 0.4);
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.845);
+    z-index: 1;
 }
 
 .Store_Mainbox{
@@ -40,35 +59,217 @@
     background-image: url('홍대.jpeg');
 }
 .Store_Mn{
-    position: absolute;
-    width: 28%;
-    height: 22%;
-    top: 57%;
-    left: 12%;
-    border: 0.1px solid black;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 1px rgb(213, 213, 213);
+   background-color: #ffffff; /* 명함 배경은 흰색 */
+    border-radius: 12px; /* 둥근 모서리 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* 입체적인 그림자 (명함 효과) */
+    padding: 35px; /* 내부 여백 증가 */
+    position: relative; /* 로고나 장식 요소 배치를 위해 */
+    overflow: hidden; /* 내부 요소가 넘치지 않게 */
+    width: 100%; /* 부모 요소에 맞춰 너비 */
+    max-width: 450px; /* 명함처럼 너무 커지지 않도록 최대 너비 제한 (예시) */
+    margin: 0 auto; /* 중앙 정렬 (필요시) */
+    margin-top: 550px;
+    margin-left: 225px;
 }
+
+/* ✨ 가게 이름 헤더 (명함의 상단 로고처럼) */
+.Store_Mn .card-header {
+    /* 이 부분은 ul li:first-child 대신 별도의 div나 h2로 구조화하는 것을 추천합니다. */
+    /* 현재 구조에서는 ul li:first-child를 활용해 스타일링합니다. */
+    font-size: 1.8em;
+    font-weight: 800;
+    color: #007bff; /* 파란색으로 강조 */
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #e0e0e0; /* 밑줄을 더 굵게 */
+    letter-spacing: -0.5px;
+} 
+
+/* ✨ 정보 목록 (아이콘 + 텍스트) */
+.Store_Mn ul {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 15px; /* 정보 간 간격 */
+}
+
 
 .Store_Mn li{
-    list-style: none;
-    width: 400px;
-    margin-left: 10px;
-    text-align: center;
-    margin-top: 14px;
-    border: 1px solid black;
+    font-size: 1.05em; /* 정보 텍스트 크기 */
+    color: #495057; /* 텍스트 색상 */
+    display: flex; /* 아이콘과 텍스트를 가로로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 8px 0; /* 각 정보 항목 내부 패딩 */
+    border-bottom: 1px dotted #e9ecef; /* 각 항목을 구분하는 점선 */
 }
-#map{
-    position: absolute;
-    width: 400px;
-    height: 300px;
-    top: 23%;
-    left: 15%;
-    filter: drop-shadow(1px 1px 1px gray);
-    border: none;
-    z-index: 100;
-  }
 
+.Store_Mn li:last-child {
+    border-bottom: none; /* 마지막 항목은 밑줄 없음 */
+}
+
+/* ✨ 아이콘 스타일 (FontAwesome 등 외부 라이브러리를 사용한다고 가정) */
+/* 이 예시에서는 content 속성으로 임시 아이콘을 대체합니다. */
+/* 실제로는 FontAwesome 아이콘 클래스를 li 태그 안에 직접 넣는 것이 더 좋습니다. */
+/* 예를 들어: <li class="location-icon">가게위치: {Stroelocation}</li> */
+/* 그리고 CSS에서는 .location-icon::before 로 FontAwesome 아이콘을 지정. */
+
+/* 임시 아이콘 스타일 (실제 아이콘이 있다면 이 부분은 제거) */
+.Store_Mn li::before {
+    font-family: 'Font Awesome 5 Free'; /* FontAwesome 사용 가정 */
+    font-weight: 900; /* Solid 아이콘 */
+    margin-right: 15px; /* 아이콘과 텍스트 사이 간격 */
+    color: #007bff; /* 아이콘 색상 파란색 */
+    font-size: 1.2em;
+    min-width: 25px; /* 아이콘 너비 고정하여 텍스트 정렬 유지 */
+    text-align: center;
+}
+
+/* 각 정보에 맞는 아이콘 (임시로 content 값 사용, 실제는 FontAwesome 아이콘 코드) */
+/* 예시: fa-user, fa-phone, fa-map-marker-alt, fa-id-card 등 */
+.Store_Mn li:nth-child(2)::before { content: '\f007'; } /* 대표님: 사용자 아이콘 */
+.Store_Mn li:nth-child(3)::before { content: '\f095'; } /* 전화번호: 전화 아이콘 */
+.Store_Mn li:nth-child(4)::before { content: '\f3c5'; } /* 가게위치: 지도 핀 아이콘 */
+.Store_Mn li:nth-child(5)::before { content: '\f2c2'; } /* 사업자번호: ID 카드 아이콘 */
+
+/* 첫 번째 "가게내용" li는 정보 항목이 아니므로 스타일 재정의 */
+.Store_Mn li:first-child {
+    display: block; /* Flexbox 제거 */
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #007bff; /* 파란색으로 강조 */
+    text-align: center; /* 중앙 정렬 */
+    border-bottom: none; /* 밑줄 제거 (대신 card-header를 추천) */
+    padding: 0;
+    margin-bottom: 25px; /* 하단 여백 추가 */
+}
+.Store_Mn li:first-child::before {
+    content: none; /* 첫 번째 항목은 아이콘 제거 */
+}
+
+/* --- 기타 요소 (필요시 추가) --- */
+/* 캐러셀 등 주변 요소들은 이전 CSS를 사용 */
+
+/* --- Responsive Adjustments (Optional) --- */
+@media (max-width: 768px) {
+    .Store_Mn {
+        padding: 25px;
+    }
+    .Store_Mn .card-header {
+        font-size: 1.6em;
+    }
+    .Store_Mn li {
+        font-size: 1em;
+    }
+}
+@media (max-width: 480px) {
+    .Store_Mn {
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .Store_Mn .card-header {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+}
+/* --- KaKao Map Container --- */
+/* ✨ id='map'에 직접 스타일을 적용합니다. ✨ */
+#map {
+    position: absolute; /* ✨ 기존 포지션 유지 ✨ */
+    width: 400px; /* ✨ 기존 너비 유지 ✨ */
+    height: 300px; /* ✨ 기존 높이 유지 ✨ */
+    top: 23%; /* ✨ 기존 top 위치 유지 ✨ */
+    left: 15%; /* ✨ 기존 left 위치 유지 ✨ */
+    z-index: 100; /* ✨ 기존 z-index 유지 ✨ */
+    
+    /* ✨ 세련된 디자인 요소 추가/수정 ✨ */
+    background-color: #ffffff; /* 흰색 배경으로 설정 */
+    border-radius: 12px; /* 둥근 모서리 */
+    
+    /* filter: drop-shadow 대신 box-shadow 사용 (더 유연하고 성능 좋음) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 부드럽고 확산된 그림자 */
+    /* 기존 border: none; 유지하거나, 얇고 연한 테두리로 변경 가능 */
+    border: 1px solid #e0e0e0; /* 아주 얇고 연한 회색 테두리 추가 (선택 사항) */
+    
+    overflow: hidden; /* 지도가 둥근 모서리 밖으로 넘어가지 않도록 */
+    
+    /* 지도 렌더링 전/후의 중앙 정렬을 위한 flexbox (컨테이너 내 정보 오버레이 위치에도 영향을 줌) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #6c757d; /* 텍스트 색상 (지도 로드 전 또는 오버레이 텍스트) */
+    font-size: 1.1em;
+}
+
+/* 지도 위에 띄울 수 있는 정보 오버레이 (선택 사항) */
+.map-info-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    z-index: 10;
+    color: #343a40;
+    font-size: 0.95em;
+    line-height: 1.4;
+    text-align: left;
+    max-width: 280px;
+    pointer-events: auto;
+}
+/* 만약 이 오버레이가 지도를 가리고 싶지 않다면, width/height를 100%로 지정하고,
+   내부의 map div를 absolute로 설정한 뒤 그 위에 오버레이를 겹쳐야 합니다. 
+   하지만 단순한 박스 형태를 꾸미는 것이 목적이라면 현재 방식이 더 간단합니다. */
+
+   .map-info-overlay h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.25em;
+    color: #007bff;
+    font-weight: 700;
+}
+.map-info-overlay p {
+    margin: 0 0 5px 0;
+}
+.map-info-overlay p:last-of-type {
+    margin-bottom: 0;
+}
+.map-info-overlay .view-larger {
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+    border: 1px solid #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-align: center;
+}
+.map-info-overlay .view-larger:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- Responsive Adjustments (이전과 동일) --- */
+@media (max-width: 768px) {
+    #map {
+        height: 300px;
+    }
+    .map-info-overlay {
+        position: static; 
+        max-width: none;
+        margin: 20px auto; 
+    }
+}
+@media (max-width: 576px) {
+    #map {
+        height: 250px;
+    }
+}
 
 .carousel-indicators{
     background-color: black;
@@ -79,9 +280,11 @@
     width: 800px;
     height: 500px;
     left: 47%;
-    top: 24%;
+    top: 25%;
     z-index: 101;
-    border: 1px solid black;
+    border: 0.5px solid rgba(0, 0, 0, 0.49);
+    background: white;
+    box-shadow: 0.9px 0.9px 0.1px gray;
 }
 
 .list1{
@@ -89,30 +292,6 @@
     background-color: red;
 }
 
-#MemberPlus{
-    position: absolute;
-    left: 20px;
-    top: 10px;
-    width: 120px;
-    height: 30px;
-    background: rgb(29, 55, 101);
-    color: white;
-    border: 0.1px solid white;
-    font-size: 15px;
-    border-radius: 3%;
-    box-shadow: 1px 1px 1px gray;
-}
-
-.Memberul{
-    position: absolute;
-    top: 43px;
-    left: 10px;
-    text-align: center;
-}
-
-.Memberul li{
-    margin-top: 2px;
-}
 
 .MemberPlusModal{
     height: 600px;
@@ -133,4 +312,248 @@
     height: 300px;
     top: 40%;
     left: 24%;
+}
+
+/* 8 */
+
+#MemberPlus{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 120px;
+    height: 40px;
+    background-color: #f0ecfc;
+    color: rgb(255, 255, 255);
+    border: 0.1px solid white;
+    font-size: 15px;
+    box-shadow: 1px 1px 1px gray;
+    background-image: linear-gradient(315deg, #f0ecfc 0%, #b356ffd2 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+
+  .btn-8 {
+    background-color: #007bff; /* 파란색 */
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 1.15em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    margin-bottom: 30px; /* 멤버 목록과의 간격 늘림 */
+    font-weight: 600; /* 글씨 굵게 */
+    width: 100%; /* 부모 너비에 맞춤 */
+}
+.btn-8 span {
+    position: relative;
+    z-index: 1;
+}
+.btn-8::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease-out, height 0.4s ease-out;
+    opacity: 0;
+}
+.btn-8:hover::before {
+    width: 250px;
+    height: 250px;
+    opacity: 1;
+}
+.btn-8:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.35);
+}
+.btn-8:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+/* --- Modal (모달 내부 스타일) --- */
+.modal-content { /* Bootstrap Modal의 기본 클래스 */
+    border-radius: 12px; /* 모달 자체의 둥근 모서리 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* 모달 그림자 */
+    overflow: hidden; /* 내부 요소가 넘치지 않도록 */
+}
+
+.Modal.show .modal-dialog { /* 모달 등장 애니메이션 (Bootstrap 기본 애니메이션) */
+    transform: translateY(0);
+}
+
+.Modal.show .modal-header {
+    border-bottom: none; /* 헤더 밑줄 제거 */
+    padding: 15px 20px 0; /* 패딩 조절 */
+}
+
+.Modal.show .btn-close { /* 닫기 버튼 색상/크기 조절 */
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #6c757d;
+    transition: color 0.2s;
+}
+.Modal.show .btn-close:hover {
+    color: #343a40;
+}
+
+.MemberPlusModal { /* Modal.Body에 부여된 클래스 */
+    padding: 30px 40px; /* 내부 패딩 증가 */
+    text-align: center;
+    background-color: #ffffff; /* 배경 흰색 */
+    color: #343a40;
+    border-bottom-left-radius: 12px; /* 하단 둥근 모서리 */
+    border-bottom-right-radius: 12px;
+}
+
+.MemberPlusModal .aside_storeName { /* Modal 내부 h2 */
+    font-size: 1.8em; /* 크기 약간 키움 */
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.MemberPlusModal a { /* Modal 내부 안내 텍스트 */
+    font-size: 1.0em;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 30px;
+    display: block; /* 마진 적용을 위해 */
+}
+
+.MemberPlusModal .MemberPlusUI {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 입력 필드와 버튼 간격 */
+    width: 100%;
+}
+
+.MemberPlusModal .MemberPlusUI input {
+    padding: 14px 18px; /* 패딩 증가 */
+    border: 1px solid #ced4da;
+    border-radius: 8px; /* 둥근 모서리 */
+    font-size: 1.05em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.MemberPlusModal .MemberPlusUI input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* 포커스 시 파란색 그림자 */
+}
+
+.MemberPlusModal .MemberPlusUI button {
+    background-color: #28a745; /* 추가 버튼은 초록색 */
+    color: white;
+    border: none;
+    padding: 15px; /* 패딩 증가 */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2); /* 그림자 */
+}
+.MemberPlusModal .MemberPlusUI button:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* --- 멤버 목록 (`Memberul`) --- */
+.Memberul {
+    list-style: none;
+    padding: 0;
+    margin-top: 60px; /* "인원 추가하기" 버튼과의 간격은 버튼이 가짐 */
+    width: 100%;
+}
+.Memberul a { /* "가게 멤버들" 제목 */
+     font-size: 1.25em; /* 폰트 크기 약간 키움 */
+    font-weight: 700; 
+    color: #007bff; 
+    border-bottom: 2px solid #e0e0e0; 
+    padding-bottom: 10px;
+    display: block;
+    margin-bottom: 20px; 
+    text-align: center;
+    letter-spacing: -0.3px; /* 자간 조절로 제목 깔끔하게 */
+}
+.Memberul ul { /* 실제 멤버 리스트 컨테이너 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 280px; /* 멤버 목록이 길어지면 스크롤 */
+    overflow-y: auto;
+    /* 스크롤바 디자인은 브라우저마다 다르므로, 필요시 웹킷 전용 CSS 추가 */
+    border: 1px solid #e9ecef; /* 전체 목록 컨테이너에 연한 테두리 */
+    border-radius: 8px; /* 둥근 모서리 */
+    padding: 10px; /* 내부 패딩 */
+}
+.Memberul li {
+     /* ✨ '묻히는' 느낌과 '크고 안 예쁘다'는 느낌을 개선합니다. ✨ */
+    background-color: #ffffff; /* 개별 아이템 배경을 흰색으로 강조 */
+    border: 1px solid #dcdfe3; /* 더 명확하고 부드러운 테두리 색상 */
+    padding: 14px 18px; /* 패딩을 약간 늘려 여유 공간 확보 (너무 커 보이면 줄여보세요) */
+    margin-bottom: 12px; /* 항목 간 간격 약간 늘림 */
+    border-radius: 10px; /* 둥근 모서리 강화 */
+    font-size: 1.05em; /* 폰트 크기 약간 키움 */
+    color: #343a40; /* 텍스트 색상을 더 진하게 */
+    font-weight: 500; /* 글씨 굵기 살짝 더해서 명확하게 */
+    letter-spacing: -0.2px; /* 자간 조절 */
+
+    transition: all 0.25s ease-in-out; /* 모든 전환 효과를 부드럽게 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ✨ 박스가 주변에 '묻히는' 느낌 개선을 위한 그림자 강화 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* 부드럽지만 존재감 있는 그림자 */
+}
+.Memberul li:last-child {
+    margin-bottom: 0;
+}
+.Memberul li:hover {
+    background-color: #e6f3ff; /* 호버 시 연한 파란색 */
+    transform: translateY(-3px); /* 위로 살짝 뜨는 효과 */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1); /* 호버 시 그림자 강조 */
+}
+
+/* --- Responsive Adjustments (Optional, 이전과 유사) --- */
+@media (max-width: 992px) {
+    /* .content-wrapper, .aside 등은 이전 코드 참고 */
+    .aside {
+        flex: none; 
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .Memberul ul {
+        max-height: 200px; /* 작은 화면에서 멤버 목록 높이 조절 */
+    }
+}
+@media (max-width: 576px) {
+    .aside {
+        padding: 20px;
+    }
+    .MemberPlusModal {
+        padding: 20px 25px;
+    }
+    .MemberPlusModal .aside_storeName {
+        font-size: 1.5em;
+    }
+    .Memberul li {
+        padding: 10px 15px;
+    }
 }

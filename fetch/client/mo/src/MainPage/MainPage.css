@@ -1,30 +1,82 @@
-.html,body{
-    margin: 0%;
-    padding: 0%;
-  }
-
-  
-  .MainNav{
+  .MainNav {
     position: fixed;
     width: 100%;
     height: 56px;
     background: white;
     z-index: 2;
     box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.392);
-  }
-  
-  .Mainname{
-    position: absolute;
-    width: 8%;
-    height: 5%;
-    font-size: 30px;
-    font-weight:500;
+    display: flex; /* Flexbox 사용 */
+    justify-content: space-between; /* 로고와 메뉴 간격 조절 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 0 20px; /* 좌우 패딩 추가 */
+}
+
+.Mainname {
+    font-size: 25px;
+    font-weight: 500;
     text-shadow: 1px 1px 1px rgb(222, 236, 255);
-    left: 8%;
-    bottom: 30px;
     color: black;
     font-family: 'Fredoka One', cursive;
+    line-height: 56px; /* 내비게이션 바 높이에 맞춰 줄 높이 조정 */
+}
+
+.MainUl {
+    display: flex; /* Flexbox 사용 */
+    justify-content: space-between; /* 아이템 간격을 최대한 벌림 */
+    width: 50%; /* 너비를 50%로 설정 */
+    height: 100%;
+    margin: 0; /* 여백 제거 */
+    padding: 0; /* 패딩 제거 */
+}
+
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 600px) {
+  .MainUl {
+      flex-direction: column; /* 수직 방향으로 배치 */
+      align-items: flex-start; /* 왼쪽 정렬 */
+      width: 100%; /* 전체 너비로 설정 */
   }
+
+  .Mainname {
+      font-size: 10px; /* 제목 글자 크기 조정 (필요에 따라 조정) */
+      margin-left: 0; /* 왼쪽 여백 제거 */
+      width: 100%; /* 전체 너비로 설정하여 왼쪽 정렬 */
+  }
+
+  .MainUl li {
+      font-size: 14px; /* 리스트 항목 글자 크기 조정 */
+      margin: 5px 0; /* 수직 간격 설정 */
+  }
+}
+.MainUl li {
+    flex: 1; /* 각 목록 항목이 고르게 분포 */
+    max-width: 14%; /* 최대 너비 설정 */
+    min-width: 80px; /* 최소 너비 설정하여 너무 좁아지지 않도록 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    line-height: 56px; /* 내비게이션 바 높이에 맞춰 줄 높이 조정 */
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    padding: 0; /* 항목 안쪽 여백 제거 (필요시 추가 가능) */
+    list-style: none;
+}
+
+
+
+@media (max-width: 768px) {
+    .MainUl {
+        flex-direction: column; /* 작은 화면에서는 세로로 나열 */
+        align-items: center; /* 중앙 정렬 */
+    }
+
+    .MainUl li {
+        max-width: 100%; /* 각 항목이 100% 너비를 차지 */
+        line-height: 3; /* 줄 높이 조정 */
+    }
+}
+
   
 
   .swiper{
@@ -33,32 +85,7 @@
     background: white;
 }
 
-  .MainUl{
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    left: 20%;
-    margin: 0%;
-    padding: 0%;
-    overflow: hidden;
-  }
-  
-  .MainUl li{
-    position: relative;
-    margin: 0%;
-    padding: 0%;
-    float: left;
-    width: 14%;
-    left: 5%;
-    height: 100%;
-    font-size: 12px;
-    list-style: none;
-    text-align: center;
-    line-height:4.5;
-    font-weight: 400;
-    cursor: pointer;
-    transition-duration: 0.5s;
-  }
+ 
 
   .MainUl a{
   color: black;
@@ -230,6 +257,13 @@
       bottom: 38px;
     }
   
+
+   /* 작은 화면에서의 스타일 변경 */
+@media (max-width: 600px) {
+  .searchbox {
+      display: none; /* 화면 너비가 600px 이하일 때 숨기기 */
+  }
+}
     #search1{
       border: none;
       background: rgb(226, 226, 226);
@@ -262,7 +296,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgb(98, 126, 227);
+    background: rgb(67, 67, 67);
   }
 
   .swiper-button-prev::after{
@@ -281,7 +315,7 @@
     position: absolute;
     width: 400px;
     height: 400px;
-    color: black;
+    color: white;
     left: 18%;
     top: 37%;
   }
@@ -300,7 +334,7 @@
     background: white;
     color: gray;
     box-shadow: 1px 1px 2px gray;
-    line-height: 3.6;
+    line-height: 4;
     font-weight: 600;
   }
   .mainteamaction{
@@ -318,8 +352,9 @@
   .maintema2{
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 70%;
     top: 75.4%;
+    background: rgb(45, 45, 45);
   }
   
 
@@ -329,17 +364,23 @@
     height: 90%;
     top: 0%;
     border: solid gray;
+    background: rgb(45, 45, 45);
     border-width: 0.5px 0.5px 0.5px 0px;
   }
 
-  .ListHover{
-    position: relative;
-    width: 100%;
-    height: 0%;
-    opacity: 0%;
-    top: 58px;
+  .ListHover {
+    display: none;
+    position: absolute; /* 내비게이션 바 아래에 위치하도록 설정 */
+    width: 100%; /* 너비를 100%로 설정 */
+    height: auto; /* 높이를 자동으로 조정 */
+    opacity: 1; /* 보이도록 설정 */
+    top: 56px; /* 내비게이션 바 아래에 위치 (내비게이션 바의 높이와 동일) */
     transition-duration: 0.5s;
-  }
+    background-color: white; /* 배경색 추가 (필요시) */
+    box-shadow: 0 1px 4px rgba(128, 128, 128, 0.392); /* 그림자 효과 추가 (선택사항) */
+    z-index: 1; /* 내비게이션 바 아래에 위치하도록 z-index 설정 */
+}
+
   
   .leftbox2{
     position: absolute;
@@ -348,15 +389,144 @@
     top: 42%;
   }
   
-  .rightbox{
-    position: absolute;
-    width: 50%;
+ 
+  /* LiveRanking.css */
+
+.rightbox {
+  position: absolute;
+  top: 0%;
+  width: 50%;
     left: 50%;
-    height: 90%;
-    top: 0%;
-    border: solid gray;
-    border-width: 0.5px 0px 0.5px 0px;
-  }
+  padding: 20px;
+      height: 90%;
+    background: rgb(45, 45, 45);
+        border-width: 0.5px 0px 0.5px 0px;
+  border: solid gray;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+#rightname {
+  position: relative;
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+
+.realtime-ranking-list {
+  position: relative;
+  top: 15%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* 아이템 간격 */
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease-out, background-color 0.3s ease; /* 위치 변화와 배경색 변화에 애니메이션 적용 */
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #555;
+  border-left: 5px solid transparent; /* 순위 변화 인디케이터 */
+  position: relative; /* 순위 변화 애니메이션 기준점 */
+  overflow: hidden; /* 점수 변화 애니메이션을 위해 */
+}
+
+.ranking-item:nth-child(1) { border-left-color: #ffd700; /* 1등은 금색 */ }
+.ranking-item:nth-child(2) { border-left-color: #c0c0c0; /* 2등은 은색 */ }
+.ranking-item:nth-child(3) { border-left-color: #cd7f32; /* 3등은 동색 */ }
+
+
+.rank-number {
+  min-width: 30px; /* 순위 번호 너비 고정 */
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+}
+
+.rank-change-indicator {
+  min-width: 25px; /* 변동 표시 너비 고정 */
+  text-align: center;
+  font-size: 0.9em;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.arrow-up {
+  color: #28a745; /* 초록색 */
+  animation: bounceUp 0.8s ease-out; /* 위로 통통 튀는 애니메이션 */
+}
+
+.arrow-down {
+  color: #dc3545; /* 빨간색 */
+  animation: bounceDown 0.8s ease-out; /* 아래로 통통 튀는 애니메이션 */
+}
+
+.dash {
+  color: #6c757d;
+}
+
+.job-name {
+  flex-grow: 1; /* 남은 공간을 이름이 채우도록 */
+  color: #343a40;
+}
+
+.job-score {
+  font-weight: bold;
+  color: #007bff;
+  min-width: 50px;
+  text-align: right;
+  margin-left: 15px;
+}
+
+/* 랭크업 시 배경 하이라이트 (짧게 반짝) */
+.ranking-item.rank-up {
+  background-color: #e0ffe0; /* 연한 초록색 */
+  animation: highlightGreen 1.5s forwards;
+}
+
+/* 랭크다운 시 배경 하이라이트 (짧게 반짝) */
+.ranking-item.rank-down {
+  background-color: #ffe0e0; /* 연한 빨간색 */
+  animation: highlightRed 1.5s forwards;
+}
+
+/* === 애니메이션 키프레임 === */
+@keyframes highlightGreen {
+  0% { background-color: #e0ffe0; }
+  50% { background-color: #f8f9fa; }
+  100% { background-color: #fff; }
+}
+
+@keyframes highlightRed {
+  0% { background-color: #ffe0e0; }
+  50% { background-color: #f8f9fa; }
+  100% { background-color: #fff; }
+}
+
+@keyframes bounceUp {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { transform: translateY(-5px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceDown {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { transform: translateY(5px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
 
   .MainPage_abla_review{
     position: absolute;
@@ -391,9 +561,9 @@
   #BoardPlus{
     position: absolute;
     width: 12%;
-    height: 3%;
+    height: 5%;
     left: 85%;
-    top: 6.5%;
+    top: 9.2%;
     font-size: 14px;
     background: white;
     border: 0.5px solid gray;
@@ -458,7 +628,7 @@
     left: 5%;
     top: 5.5%;
     font-weight: 500;
-    color: gray;
+    color: white;
     font-family: 'Jua', sans-serif;
   }
   
@@ -475,11 +645,11 @@
    
   #leftname{
     position: absolute;
-    font-size: 24px;
+    font-size: 28px;
     left: 5.5%;
-    top: 6.5%;
+    top: 8.5%;
     font-weight: 500;
-    color: gray;
+    color: rgb(255, 255, 255);
     font-family: 'Jua', sans-serif;
   }
   
@@ -553,3 +723,218 @@
   left: 550px;
 }
 
+
+.alarmtext{
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  top: 30px;
+  right: 0px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+#alarmButton{
+  margin-left: 10px;
+}
+
+#alarmButton :hover{
+  cursor: pointer;
+}
+
+/* modern-alba-button 스타일 */
+.modern-alba-button {
+  background-color: #6a8aff; /* 부드러운 블루 */
+  margin-top: 50px;
+  margin-left: 530px;
+  color: white; /* 흰색 글씨 */
+  border: none; /* 테두리 없음 */
+  border-radius: 8px; /* 살짝 둥근 모서리 */
+  padding: 10px 20px; /* 내부 여백 */
+  font-size: 15px; /* 글씨 크기 */
+  font-weight: bold; /* 글씨 굵게 */
+  cursor: pointer; /* 마우스 오버 시 손가락 모양 */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* 부드러운 변화 효과 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 은은한 그림자 */
+  letter-spacing: 0.5px; /* 글자 간격 */
+}
+
+.modern-alba-button:hover {
+  background-color: #5175e0; /* 호버 시 약간 더 진한 블루 */
+  transform: translateY(-2px); /* 위로 살짝 올라가는 효과 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 호버 시 그림자 진해짐 */
+}
+
+.modern-alba-button:active {
+  transform: translateY(0); /* 클릭 시 원위치 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 클릭 시 그림자 약해짐 */
+}
+
+.job-listing-container {
+    width: 90%;
+    max-width: 1200px;
+    left: 5%;
+    top: 8%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    position: relative;
+    margin-bottom: 50px; /* 하단 여백 추가 */
+}
+
+.job-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* 캐러셀 슬라이딩 시 넘치는 내용 숨김 */
+    padding: 0 50px; /* 버튼 공간 확보 */
+    box-sizing: border-box;
+}
+
+.job-list-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 슬라이드 애니메이션 */
+    gap: 20px; /* 카드 사이 간격 */
+    margin-bottom: 20px;
+    /* track의 너비를 모든 카드가 들어갈 수 있도록 충분히 크게 설정
+       transform으로 이동하기 때문에, itemsPerPage에 따라 
+       flex-basis가 조절되어도 한 페이지 단위로 움직이도록 합니다. */
+}
+
+.job-card {
+    flex-shrink: 0; /* 카드가 줄어들지 않도록 */
+    /* 기본적으로 3개씩 보이도록 설정 */
+    flex-basis: calc(33.33% - 13.33px); /* 100% / 3 - (gap * 2 / 3) */
+    min-width: 300px; /* 카드가 너무 작아지지 않도록 최소 너비 */
+    
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.job-card-header .job-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.job-card-header .job-title:hover {
+    color: #007bff;
+}
+
+.job-card-body p {
+    margin: 8px 0;
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.job-card-body strong {
+    color: #444;
+}
+
+/* 네비게이션 버튼 */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 123, 255, 0.8);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.nav-button.prev-button {
+    left: 0;
+}
+
+.nav-button.next-button {
+    right: 0;
+}
+
+.nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+}
+
+
+/* 페이지네이션 dots */
+.carousel-pagination {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #007bff;
+    width: 12px;
+    height: 12px;
+}
+
+
+/* 반응형 디자인 */
+@media (max-width: 992px) { /* 태블릿에서는 2개씩 */
+    .job-card {
+        flex-basis: calc(50% - 10px); /* 100% / 2 - (gap / 2) */
+        min-width: auto;
+    }
+    .nav-button {
+      padding: 10px 15px;
+      font-size: 1em;
+    }
+    .job-carousel-wrapper {
+      padding: 0 40px;
+    }
+}
+
+@media (max-width: 600px) { /* 더 작은 태블릿/모바일 가로에서는 1개씩 */
+    .job-card {
+        flex-basis: 100%;
+        min-width: auto;
+    }
+    .nav-button {
+      padding: 8px 12px;
+      font-size: 0.9em;
+    }
+    .job-carousel-wrapper {
+      padding: 0 30px;
+    }
+}

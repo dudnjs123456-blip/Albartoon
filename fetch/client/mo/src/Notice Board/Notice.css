@@ -1,72 +1,208 @@
-.BoardMain{
-    position: absolute;
-    top: 5%;
+/* 전체 레이아웃을 중앙에 배치하고 은은한 배경을 줍니다. */
+.BoardMain {
+    display: flex; /* 자식 요소를 유연하게 배치 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    min-height: 100vh; /* 뷰포트 높이의 최소 100%를 차지하여 전체 화면 중앙에 오도록 */
+    background-color: #f0f2f5; /* 부드러운 회색 배경 */
+    padding: 20px; /* 전체적인 패딩 */
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+}
+
+/* 폼 컨테이너: 카드 형태의 깔끔한 디자인 */
+.BoardForm {
+    display: flex;
+    flex-direction: column; /* 자식 요소들을 세로로 쌓기 */
+    gap: 20px; /* 자식 요소들 간의 간격 */
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px; /* 부드러운 모서리 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */
     width: 100%;
-    height: 100%;
+    max-width: 760px; /* 폼의 최대 너비 설정, 너무 넓어지지 않도록 */
+    box-sizing: border-box;
 }
 
-.BoardForm{
-    position: absolute;
-    width: 100%;
-    height: 99%;
-    top: 1%;
+/* 모든 입력 필드와 셀렉트 박스의 공통 스타일 */
+#BoardName,
+.BoardMaion,
+#workingHours, /* 새로 추가 */
+#storeName,    /* 새로 추가 */
+#hourlyWage,   /* 새로 추가 */
+.selectContainer select { /* selectContainer 안의 select 요소들 */
+    width: 100%; /* 부모 너비에 꽉 차도록 */
+    padding: 14px 16px;
+    border: 1px solid #d0d5dd; /* 은은한 회색 테두리 */
+    border-radius: 8px;
+    font-size: 1rem; /* 텍스트 크기 */
+    color: #344054;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
 }
 
-#BoardName{
-    position: relative;
-    left: 4%;
-    top: 5%;
-    border: 1.5px solid rgba(128, 128, 128, 0.319);
-    border-radius: 4px;
-    width: 40%;
-    height: 4%;
+/* 포커스 시 스타일 */
+#BoardName:focus,
+.BoardMaion:focus,
+#workingHours:focus,
+#storeName:focus,
+#hourlyWage:focus,
+.selectContainer select:focus {
+    border-color: #6c7dfd; /* 포커스 시 색상 변경 */
+    box-shadow: 0 0 0 4px rgba(108, 125, 253, 0.2); /* 은은한 그림자 효과 */
+    outline: none; /* 기본 아웃라인 제거 */
 }
 
-#BoardName::placeholder{
-    position: relative;
-    left: 3%;
+/* 플레이스홀더 텍스트 스타일 */
+#BoardName::placeholder,
+.BoardMaion::placeholder,
+#workingHours::placeholder, /* 새로 추가 */
+#storeName::placeholder,   /* 새로 추가 */
+#hourlyWage::placeholder { /* 새로 추가 */
+    color: #98a2b3; /* 밝은 회색 플레이스홀더 */
+    font-size: 1rem;
 }
 
-#oardMain{
-    position: po;
-    top: 100%;
-    left: 4%;
-    width: 80%;
-    height: 60%;
-    border: 1.5px solid rgba(128, 128, 128, 0.319);
-    border-radius: 4px;
+/* 텍스트 에어리어 스타일 (높이 및 크기 조절) */
+.BoardMaion {
+    min-height: 250px; /* 최소 높이 */
+    resize: vertical; /* 수직으로만 크기 조절 가능 */
 }
 
-.BoardMaion{
-    position: absolute;
-    width: 1480px;
-    height: 600px;
-    right: 164px;
-    border: 1.5px solid rgba(128, 128, 128, 0.319);
-    border-radius: 4px;
-    top: 15%;
-    resize: none;
+/* 셀렉트 박스 컨테이너 (직종, 고용형태) */
+.selectContainer {
+    display: flex;
+    align-items: center; /* 라벨과 셀렉트 박스 수직 정렬 */
+    gap: 10px; /* 라벨과 셀렉트 박스 사이 간격 */
+    font-size: 1rem;
+    color: #344054;
 }
 
-.seq{
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 50%;
-    top: 6%;
-    background: red;
+.selectContainer label {
+    font-weight: 600; /* 라벨 텍스트 두께 */
+    min-width: 80px; /* 라벨 최소 너비 (필요에 따라 조절) */
 }
-.BoardSubmit{
-    position: absolute;
-    width: 15%;
-    left: 43.5%;
-    letter-spacing: 2px;
-    height: 5%;
-    top: 85.5%;
-    border-radius: 50px;
-    background: rgb(50, 197, 255);
+
+/* 선택된 정보 표시 영역 */
+.selectedInfoDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* 정보 항목 간의 간격 */
+    font-size: 0.95rem;
+    color: #475467;
+}
+
+.selectedInfoDisplay p {
+    margin: 0; /* 기본 p 태그 마진 초기화, flex gap이 간격 조절 */
+    /* 필요에 따라 p에 직접 스타일을 줄 수 있습니다. */
+}
+
+.selectedInfoDisplay p span {
+    font-weight: 700;
+    color: #5b5bd6; /* 강조 색상 */
+}
+
+/* 작성하기 버튼 스타일 */
+.BoardSubmit {
+    width: 180px; /* 버튼 고정 너비 */
+    padding: 15px 0;
+    margin: 10px auto 0; /* 중앙 정렬을 위해 auto 사용, 위쪽 여백 */
+    background-color: #6c7dfd; /* 산뜻한 파란색 */
     color: white;
-    font-size: 20px;
+    font-size: 1.15rem; /* 폰트 크기 */
+    font-weight: 600;
+    letter-spacing: 0.5px;
     border: none;
-    box-shadow: 1px 1px 4px rgba(128, 128, 128, 0.683);
+    border-radius: 50px; /* 둥근 버튼 */
+    cursor: pointer; /* 마우스 오버 시 커서 변경 */
+    box-shadow: 0 4px 10px rgba(108, 125, 253, 0.3); /* 은은한 그림자 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 호버 및 클릭 애니메이션 */
 }
+
+.BoardSubmit:hover {
+    background-color: #5b5bd6; /* 호버 시 색상 어둡게 */
+    transform: translateY(-2px); /* 살짝 위로 올라가는 효과 */
+}
+
+.BoardSubmit:active {
+    background-color: #4b4baa; /* 클릭 시 더 어둡게 */
+    transform: translateY(0); /* 다시 원래 위치로 */
+}
+
+/* 모바일 화면을 위한 반응형 조정 */
+@media (max-width: 768px) {
+    .BoardForm {
+        padding: 25px; /* 모바일에서 패딩 줄이기 */
+        gap: 15px; /* 간격도 줄이기 */
+    }
+
+    #BoardName,
+    .BoardMaion,
+    #workingHours,
+    #storeName,
+    #hourlyWage,
+    .selectContainer select {
+        font-size: 0.9rem; /* 폰트 크기 줄이기 */
+        padding: 12px 14px;
+    }
+
+    .BoardMaion {
+        min-height: 200px; /* 모바일에서 텍스트 에어리어 높이 조정 */
+    }
+
+    .selectContainer {
+        flex-direction: column; /* 라벨과 셀렉트를 세로로 쌓기 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+        gap: 5px;
+    }
+
+    .selectContainer label {
+        min-width: unset; /* 최소 너비 제한 해제 */
+    }
+
+    .BoardSubmit {
+        width: 100%; /* 버튼을 전체 너비로 확장 */
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+
+    .selectedInfoDisplay {
+        gap: 3px;
+    }
+}
+
+/* === BoardSubmit 버튼 스타일 수정 === */
+.BoardSubmit {
+    width: 180px;
+    padding: 15px 0;
+    margin: 10px auto 0;
+    background-color: #6c7dfd; /* 산뜻한 파란색 (기본 활성 색상) */
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer; /* 클릭 가능한 커서 */
+    box-shadow: 0 4px 10px rgba(108, 125, 253, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease, cursor 0.3s ease; /* 전환 효과 추가 */
+}
+
+/* 폼이 유효하지 않을 때 버튼이 비활성화된 것처럼 보이게 하는 스타일 */
+.BoardSubmit.disabled-look {
+    background-color: #a0a0a0; /* 회색조로 변경 */
+    opacity: 0.6; /* 투명도 조절 */
+    cursor: not-allowed; /* 마우스 오버 시 클릭 불가 커서 */
+    box-shadow: none; /* 그림자 제거 또는 약하게 */
+    transform: none; /* 호버 효과 제거 */
+}
+
+.BoardSubmit:not(.disabled-look):hover { /* disabled-look 클래스가 아닐 때만 hover 적용 */
+    background-color: #5b5bd6;
+    transform: translateY(-2px);
+}
+
+.BoardSubmit:not(.disabled-look):active { /* disabled-look 클래스가 아닐 때만 active 적용 */
+    background-color: #4b4baa;
+    transform: translateY(0);
+}
+
