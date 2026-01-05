@@ -704,7 +704,7 @@ export function Mainteam2() {
 ];
 
     const [jobs, setJobs] = useState([]); // 서버에서 받아올 알바 데이터
-    const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 (슬라이드 인덱스)
+    const [currentPage, setCurrentPage] = useState(0); // 현재ddd 페이지 (슬라이드 인덱스)
     const [itemsPerPage, setItemsPerPage] = useState(3); // 한 화면에 표시될 카드 개수
     
     // DOM 요소에 접근하기 위한 ref
@@ -905,6 +905,7 @@ const generateNewRankingData = (currentRankings) => {
             <button id='BoardPlus'>알바 공고</button>
           </Link>
         )}
+        
       </section>
 
         <section className='rightbox'>
